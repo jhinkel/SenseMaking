@@ -1,25 +1,25 @@
 'use strict';
 
 /**
- * @ngdoc overview
- * @name senseMakingApp
- * @description
- * # senseMakingApp
- *
- * Main module of the application.
- */
+* @ngdoc overview
+* @name senseMakingApp
+* @description
+* # senseMakingApp
+*
+* Main module of the application.
+*/
 angular
-  .module('senseMakingApp', [
+.module('senseMakingApp', [
     'ngAnimate',
     'ngRoute'
-  ])
-  .config(function ($routeProvider) {
+])
+.config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+    .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      })
-      .otherwise({
+    })
+    .otherwise({
         redirectTo: '/'
-      });
-  });
+    });
+});
