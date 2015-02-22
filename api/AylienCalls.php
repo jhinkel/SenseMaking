@@ -3,7 +3,10 @@
 #require __DIR__ . "/vendor/autoload.php";
 
 # Or manually
- require_once("src/AYLIEN/TextAPI.php");
+ini_set('display_errors', true);
+
+error_reporting(E_ALL);
+require_once("src/AYLIEN/TextAPI.php");
 
 $text = "John is a very good football player!";
 
