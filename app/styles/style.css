@@ -1,0 +1,49 @@
+#current-month{
+	margin-top: 2em;
+}
+#current-month p{
+	padding:0;
+	margin:0;
+	background-color: #CB6D62;
+	color:white;
+	text-align: center;
+	font-size:3em;
+}
+
+#current-month section{
+
+	border:5px #CB6D62 solid;
+	border-radius: 0px 0px 10px 10px;
+	padding: 1.5em 1.5em;
+}
+
+#title h4{
+	font-size:100px; 
+	text-decoration:none; 
+	color:black; 
+	display:inline-block;
+	margin:.5em 0 0 .5em;
+}
+
+#title p{
+	text-decoration: none;
+	color: #000;
+	float: right;
+	display: inline-block;
+	font-size:20px;
+	padding: 0;
+	margin:0;
+
+}
+
+#momths{
+	width:300px; !important
+}
+
+#months td{
+	border:3px solid; /* #{{MonthsSentiment}} */
+	border-radius: 0px 0px 5px 5px;
+	padding:.5em .5em;
+	font-size: 25px;
+
+}

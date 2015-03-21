@@ -1,8 +1,9 @@
 <!doctype html>
-<html class="no-js">
+<html lang="en" class="no-js">
 <head>
     <meta charset="utf-8">
     <title>Alderwood Times</title>
+    <script src="scripts/angular.min.js"></script>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -13,27 +14,58 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="../bower_components/semantic-ui/dist/semantic.min.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/style.css">
     <!-- endbuild -->
 </head>
 <body ng-app="senseMakingApp">
     <div class="container">
-        <div ng-view="current-month"></div>
-        <a class="navbar-brand" href="#/">
-            <img src="images/logo.png" alt="senseMaking" />
+        <div ng-view="current-month" id="current-month">
+                        <p>2004</p>
+                        <section id="month">
+                            {{CurrentMonth}}
+                        </section>
+        </div>
+        <a class="navbar-brand" href="#/" id="title">
+            <h4>The Alderwood Times</h4>
+            <p>Your Best Local News Source in Alderwood</p>
+            <!--img src="images/logo.png" alt="senseMaking" /-->
         </a>
     </div>
 
     <div class="container">
-        <div ng-view="months"></div>
-        <div ng-view="entities"></div>
+        <div ng-view="months" id="months" style="width:25%;">
+            <table>
+                <tr>
+                    <td>Jan</td>
+                    <td>Feb</td>
+                    <td>Mar</td>
+                </tr>
+                    <td>Apr</td>
+                    <td>May</td>
+                    <td>Jun</td>
+                <tr>
+                    <td>Jul</td>
+                    <td>Aug</td>
+                    <td>Sep</td>
+                </tr>
+                <tr>
+                    <td>Oct</td>
+                    <td>Nov</td>
+                    <td>Dec</td>
+                </tr>
+            </table>
+        </div>
+        <div ng-view="entities" id="tag-cloud" style="width:75%;">
+            {{tag cloud}}
+        </div>
     </div>
 
     <div class="container">
-        <div ng-view=""></div>
+        <div ng-view="" id="major-news">This Month's Major News</div>
     </div>
 
     <div class="container">
-        <div ng-view="trendline"></div>
+        <div ng-view="trendline">This Month's Trend Line</div>
     </div>
 
 
