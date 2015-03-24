@@ -17,6 +17,7 @@ body {
   margin: 0 auto;
   width: 960px;
 }
+
 h1,
 h2,
 h3,
@@ -26,6 +27,7 @@ h4 {
 h1 {
   font-size: 3em;
 }
+p{font-family: 'Georgia',sans-serif;}
 *[ng-view] {
   border: 1px solid black;
   min-width: 100px;
