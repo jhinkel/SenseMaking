@@ -8,10 +8,11 @@
 *
 * Main module of the application.
 */
-angular
-.module('senseMakingApp', [
+angular.module('SenseMakingApp', [
     'ngAnimate',
-    'ngRoute'
+    'ngRoute',
+    'SenseMakingApp.controllers',
+    'SenseMakingApp.services'
 ])
 .config(function ($routeProvider) {
     $routeProvider

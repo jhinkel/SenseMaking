@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <title>Alderwood Times</title>
-    <script src="scripts/angular.min.js"></script>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -15,10 +14,9 @@
     <link rel="stylesheet" href="../bower_components/semantic-ui/dist/semantic.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/style.css">
-    <script src="http://d3js.org/d3.v3.min.js"></script>
     <!-- endbuild -->
 </head>
-<body ng-app="senseMakingApp">
+<body ng-app="SenseMakingApp" ng-controller="MainCtrl">
     <div class="container">
         <div ng-view="current-month" id="current-month">
                         <p>2004</p>
@@ -57,39 +55,31 @@
             </table>
         </div>
         <div ng-view="entities" id="tag-cloud" style="width:75%;">
-            {{tag cloud}}
+            <!--{{tag cloud}}-->
         </div>
     </div>
 
     <div class="container">
         <div ng-view="" id="major-news">This Month's Major News</div>
-        <div ng-view=""></div>
+        <div ng-view="">{{docNumbers}}</div>
     </div>
 
     <div class="container">
         <div ng-view="trendline">This Month's Trend Line</div>
     </div>
 
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-    <script>
-    !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-    }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-XXXXX-X');
-    ga('send', 'pageview');
-    </script>
-
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/d3/d3.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers.js"></script>
+    <script src="scripts/services.js"></script>
     <!-- endbuild -->
 </body>
 </html>
