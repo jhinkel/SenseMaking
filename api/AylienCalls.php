@@ -11,7 +11,7 @@ $path = "stego_dataset";
 $files = scandir($path);
 $text = "";
 for($i=0;$i<sizeof($files);$i++){
-	if($_GET["filename"] == "\"".$files[$i]."\""){
+	if($_GET["filename"] == $files[$i]){
 		$text = file_get_contents($path."/".$files[$i]);
 	}
 }

@@ -8,7 +8,7 @@ $string="";
 
 for($i=0;$i<sizeof($files);$i++){
 	
-	if($_GET["filename"] == "\"".$files[$i]."\""){
+	if($_GET["filename"] == $files[$i]){
 		$string= file_get_contents($path."/".$files[$i]);
 	}
 }

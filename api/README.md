@@ -25,3 +25,11 @@ Example
 $textapi = new AYLIEN\TextAPI("YourApplicationId", "YourApplicationKey");
 $sentiment = $textapi->Sentiment(array('text' => 'John is a very good football player!'));
 ```
+API Links (replace all filenames and keywords with your own filenames and keywords)
+=========
+johnhinkel.com/SenseMaking/api/DocFetcher.php?filename=1101162433811.txt
+johnhinkel.com/SenseMaking/api/dateParser.php
+johnhinkel.com/SenseMaking/api/DocNumbers.php
+johnhinkel.com/SenseMaking/api/Frequency.php?filename=1101162433811.txt&keyword=Alderwood
+johnhinkel.com/SenseMaking/api/AylienCalls.php?filename=1101162433811.txt
+
