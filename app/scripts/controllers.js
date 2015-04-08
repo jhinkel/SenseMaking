@@ -10,6 +10,6 @@
 angular.module('SenseMakingApp.controllers', [])
     .controller('MainCtrl', function ($scope, $log, API) {
         API.getDocNumbers().then(function(response) {
-            $log.info(response);
+            $scope.test = response[0];
         });
     });
