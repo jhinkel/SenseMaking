@@ -114,13 +114,14 @@
 		
 		
 		//set up basic scale
-		var width = 1000;
+		var width = 900;
 		var height = 800;
+		var margin = {top:40,right:20,bottom:30,left:40};
 		
 		var widthScale = d3.scale.linear()
 						.domain([0,40]) 
 						.range([0,width]);
-	
+		
 		var heightScale = d3.scale.linear()
 						.domain([0,40])
 						.range([0,height])
