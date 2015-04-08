@@ -19,13 +19,8 @@ for($i=0;$i<sizeof($files);$i++){
 $textapi = new AYLIEN\TextAPI("b47f9237", "aea8e51bf28c8eb50f01c151590d9d69");
 $sentiment = $textapi->Sentiment(array("text" => $text));
 $entities = $textapi->Entities(array("text" => $text));
-echo "Sentiment: ".json_encode($sentiment->polarity)." ";
-echo json_encode($sentiment->polarity_confidence);
+echo json_encode($sentiment->polarity.", ".$sentiment->polarity_confidence.", ".$sentiment->subjectivity_confidence);
 echo "<br>";
-echo "<br>";
-echo "Subjectivity Confidence:".json_encode($sentiment->subjectivity_confidence);
-echo "<br>";
-echo "<br>";
-echo "Entity JSON: ".json_encode($entities->entities);
+echo json_encode($entities->entities);
 ?>
 
