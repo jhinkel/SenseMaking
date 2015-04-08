@@ -114,8 +114,8 @@
 		
 		
 		//set up basic scale
-		var width = 700;
-		var height = 2000;
+		var width = 1000;
+		var height = 800;
 		
 		var widthScale = d3.scale.linear()
 						.domain([0,40]) 
@@ -140,7 +140,8 @@
 				.append("rect")
 				.attr("width", function(d){return widthScale(d);}) 
 				.attr("height", 20)
-				.attr("y",function(d,i){return i*10})
+				.attr("x",0)
+				.attr("y",function(d,i){return i*40})
 				.attr("fill", function (d){return colorScale(d)});
 		
 		})
