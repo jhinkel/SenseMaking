@@ -68,11 +68,16 @@
 
     <div class="container">
         <div ng-view="trendline">This Month's Trend Line</div>
-        <div id="frequency"></div>
+        <div id="chart"></div>
+        <div class="chart"></div>
         
     </div>
     
             <script>
+			//Approach #1
+		
+			//Approach #2
+			
 		d3.json("date.json", function(data){ //data in function(data) is data in date.json
 		
 		var DateArray = [];
@@ -145,7 +150,9 @@
 				.attr("y",function(d,i){return i*40})
 				.attr("fill", function (d){return colorScale(d)});
 		
-		})
+		});
+		
+
 		
     </script>
 
