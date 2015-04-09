@@ -11,18 +11,38 @@
 }
 
 #current-month section{
-
 	border:5px #CB6D62 solid;
 	border-radius: 0px 0px 10px 10px;
 	padding: 1.5em 1.5em;
 }
 
+
+td{
+	border:5px #CB6D62 solid;
+	border-radius: 0px 0px 10px 10px;
+	padding: 1.5em 1.5em;
+}
+
+
+.major-news
+	{
+	border:1px solid #ADABAB;
+	padding: 2em 3em 2em 3em;
+	-webkit-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
+	-moz-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
+	box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
+		}
+.major-news h2{
+	font-family: 'Georgia';
+	text-align:center;
+	}
+
 #title h4{
-	font-size:100px; 
+	font-size:80px; 
 	text-decoration:none; 
 	color:black; 
 	display:inline-block;
-	margin:.5em 0 0 .5em;
+	margin:.5em 0  0 .5em;
 }
 
 #title p{

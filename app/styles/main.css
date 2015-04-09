@@ -6,27 +6,32 @@
 }
 
 @font-face{
-  font-familt:"Georgia";
+  font-family:"Georgia";
   src: url('../fonts/Georgia') format('truetype');
 }
 
 body {
-  padding: 0;
+  padding: 5em 5em 5em 5em;
   font-family: 'Georgia', serif;
   background-color: white;
   margin: 0 auto;
   width: 960px;
+  -webkit-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
+  -moz-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
+  box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
 }
 
-h1,
 h2,
 h3,
 h4 {
-  font-family: 'OldeEnglish', sans-serif;
+  font-family: 'Georgia', sans-serif;
 }
-h1 {
+
+h1, h4 {
+   font-family: 'OldeEnglish', sans-serif;
   font-size: 3em;
 }
+
 p{font-family: 'Georgia',sans-serif;}
 *[ng-view] {
   border: 1px solid black;
