@@ -42,12 +42,12 @@ angular.module('SenseMakingApp.controllers', [])
             }
 
             for(var key in DateArray) {
-                var month_temp = DateArray[key][5]+DateArray[key][6];
+                var month_temp = DateArray[key][5] + DateArray[key][6];
                 MonthArray.push(month_temp);
             }
             console.log(MonthArray);
 
-            for (var i = 0; i< MonthArray.length; i++){
+            for (var i = 0; i < MonthArray.length; i++){
                 var num = MonthArray[i];
                 counts[num] = counts[num] ? counts[num]+1 : 1;
             }
@@ -77,7 +77,6 @@ angular.module('SenseMakingApp.controllers', [])
             window.jsondata = [30, 20, 5, 4, 6, 5, 20, 6, 10, 20, 10, 12];
             window.Testdata = [1,2,3,4,5,6,7,8,9,10,11,12];
 
-
             function graphregenerate(){
                 Keyword1 = Testdata;
                 alert(Keyword1);
@@ -101,23 +100,26 @@ angular.module('SenseMakingApp.controllers', [])
                     types: {
                         Keyword1: 'spline',
                         Keyword2: 'spline',
-                        Keyword3 : 'spline',
-                        Keyword4 : 'spline',
-                        Keyword5 : 'spline',
+                        Keyword3: 'spline',
+                        Keyword4: 'spline',
+                        Keyword5: 'spline'
                     },
-
                     groups: [
                         ['Keyword1','Keyword2']
                     ]
-                },//data
-                color: {pattern: ['#FFCC66', '#B8B8B8 ', '#B8B8B8 ', '#B8B8B8 ', '#B8B8B8', '#B8B8B8']},//color
+                },
+                color: {
+                    pattern: ['#FFCC66', '#B8B8B8 ', '#B8B8B8 ', '#B8B8B8 ', '#B8B8B8', '#B8B8B8']
+                },
                 axis: {
                     x: {
                         type: 'category',
-                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                        categories: $scope.months
                     }
-                },//Axis
-                zoom: {enabled: true}
+                },
+                zoom: {
+                    enabled: true
+                }
             }); //c3 ends
         }); //API.getDocDates ends
     }); //TrendLineCtrl ends
