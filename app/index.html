@@ -19,7 +19,7 @@
     <script src="../bower_components/d3/d3.js"></script>
     <script src="../bower_components/c3/c3.js"></script>
 </head>
-<body ng-app="SenseMakingApp" ng-controller="MainCtrl">
+<body ng-app="SenseMakingApp" ng-controller="MainCtrl" onLoad="drawc3graph()">
     <div class="container">
 
         <div id="current-month">
@@ -106,10 +106,16 @@
 
     <div class="container">
         <div>This Month's Trend Line</div>
-        <div id="chart"></div>
-        <div id="chart2"></div>
-        <div class="chart"></div>
-    </div>
+ 	
+        <button type="button" id="regenerategraph" onClick="drawc3graph()">Refresh</button>
+
+        <button type="button" id="load" onClick="load()">Load</button>
+        
+        <div id="chart">
+        	
+        </div>
+       
+    </div><!--container-->
 
             <script>
 	//XML Http Request
@@ -148,11 +154,7 @@
 				console.log(CountsArray);
 			}
 
-		//Draw the histogram in D3
-		var histogram = d3.layout.histogram()
-			.bins(12)
-			(CountsArray)
-
+		
 
 		console.log(CountsArray);
 
@@ -170,10 +172,21 @@
 			console.log(CountsArray);
 			AllDocNumber = AllDocNumber.concat(CountsArray);
 
-			var Keyword1 = ['Keyword1'];
-			var jsondata = [30, 20, 5, 4, 6, 5, 20, 6, 10, 20, 10, 12];
+			window.Keyword1 = ['Keyword1'];
+			window.jsondata = [30, 20, 5, 4, 6, 5, 20, 6, 10, 20, 10, 12];
+			window.Testdata = [1,2,3,4,5,6,7,8,9,10,11,12];
+			
+		
+			function graphregenerate(){
+					Keyword1 = Testdata;
+					alert(Keyword1);}
+	
+				
+			
 			Keyword1 = Keyword1.concat(jsondata);
-
+			
+			
+			
 			var columns = [
 				AllDocNumber,
 				Keyword1,
@@ -183,8 +196,8 @@
 				['Keyword5', 13, 12, 15, 10, 16, 15, 40, 12, 40, 13, 3, 20]
 			];
 
-			var chart = c3.generate({
-		  	bindto: '#chart2',
+			window.chart = c3.generate({
+		  	bindto: '#chart',
 			  data: {
 				columns: columns,
 				type: 'bar',
@@ -199,27 +212,27 @@
 				groups: [
 					['Keyword1','Keyword2']
 				]
-
 			},//data
-
-
-			color: {
-				pattern: ['#FFCC66', '#B8B8B8 ', '#B8B8B8 ', '#B8B8B8 ', '#B8B8B8', '#B8B8B8']
-			},//color
-
+			color: {pattern: ['#FFCC66', '#B8B8B8 ', '#B8B8B8 ', '#B8B8B8 ', '#B8B8B8', '#B8B8B8']},//color
 			axis: {
 				x: {
 					type: 'category',
 					categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 				}
-			}//Axis
-		}); //c3 ends
-
-
+			},//Axis
+			zoom: {enabled: true}
+			
+			
+			}); //c3 ends
 
 		}); //d3. ends
+
+	
+		
     </script>
 
+
+     
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
