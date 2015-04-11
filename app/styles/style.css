@@ -1,3 +1,71 @@
+@font-face {
+  font-family: 'OldeEnglish';
+  src: url('../fonts/OldeEnglish.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face{
+  font-family:"Georgia";
+  src: url('../fonts/Georgia') format('truetype');
+}
+
+body {
+  padding: 5em 5em 5em 5em;
+  font-family: 'Georgia', serif;
+  background:url('images/bg.jpg') repeat;
+  margin: 0 auto;
+  width: 80%;
+  -webkit-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
+  -moz-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
+  box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
+}
+
+h2,h3 {
+  font-family: 'Georgia', sans-serif;
+}
+
+h1, h4 {
+  font-family: 'OldeEnglish', sans-serif;
+  font-size: 3em;
+}
+
+p{font-family: 'Georgia',sans-serif;}
+*[ng-view] {
+  border: 1px solid black;
+  min-width: 100px;
+  min-height: 100px;
+}
+.container {
+  align-items: flex-start;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.container > * {
+  display: inline-block;
+}
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+#FirstTitle {
+  background-color: #0875DE;
+  display: inline-block;
+  color: #FFFFFF;
+  padding: .2em 5em .2em 1em;
+}
+
+
 #current-month{
 	margin-top: 2em;
 }
@@ -38,9 +106,9 @@ td{
 	}
 
 #title h4{
-	font-size:80px; 
-	text-decoration:none; 
-	color:black; 
+	font-size:80px;
+	text-decoration:none;
+	color:black;
 	display:inline-block;
 	margin:.5em 0  0 .5em;
 }
