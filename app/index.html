@@ -5,6 +5,9 @@
     <title>Alderwood Times</title>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="C3/c3.js"></script>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -13,14 +16,15 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="../bower_components/semantic-ui/dist/semantic.min.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="../bower_components/semantic-ui/dist/semantic.min.css" type="text/css">
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
+    <link rel="stylesheet" href="styles/style.css" type="text/css">
+    <link rel="stylesheet" href="C3/c3.min.css" type="text/css">
     <!-- endbuild -->
 </head>
 <body ng-app="SenseMakingApp" ng-controller="MainCtrl">
     <div class="container">
-    <img src="images/bg.jpg"/>
+
         <div ng-view="current-month" id="current-month" data-ng-app="MonthControllerApp">
                         <p>2004</p>
                         <section id="month" data-ng-controller="MonthController">
@@ -112,15 +116,13 @@
     <div class="container">
         <div ng-view="trendline">This Month's Trend Line</div>
         <div id="chart"></div>
+        <div id="chart2"></div>
         <div class="chart"></div>
         
     </div>
     
             <script>
-			//Approach #1
-		
-			//Approach #2
-			
+	//D3 Histogram
 		d3.json("date.json", function(data){ //data in function(data) is data in date.json
 		
 		var DateArray = [];
@@ -196,7 +198,19 @@
 		
 		});
 		
-
+		
+		
+		
+		<!--C3 Scatterplot-->
+			var chart = c3.generate({
+			bindto: '#chart2',
+			data: {
+			  columns: [
+				['data1', 30, 200, 100, 400, 150, 250],
+				['data2', 50, 20, 10, 40, 15, 25]
+			  ]
+			}
+		});
 		
     </script>
 
