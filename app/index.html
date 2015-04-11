@@ -23,11 +23,11 @@
 <body ng-app="SenseMakingApp" ng-controller="MainCtrl">
     <div class="container">
 
-        <div id="current-month" data-ng-app="MonthControllerApp">
-                        <p>2004</p>
-                        <section id="month" data-ng-controller="MonthController">
-                            {{CurrentMonth}}
-                        </section>
+        <div id="current-month">
+            <p>2004</p>
+            <section id="month">
+                {{currentMonth}}
+            </section>
         </div>
         <a class="navbar-brand" href="#/" id="title">
             <h4>The Alderwood Times</h4>
@@ -37,39 +37,33 @@
     </div>
 
     <div class="container">
-        <div id="months" style="width:25%;">
-            <table>
-                <tr>
-                    <td>Jan</td>
-                    <td>Feb</td>
-                    <td>Mar</td>
-                </tr>
-                    <td>Apr</td>
-                    <td>May</td>
-                    <td>Jun</td>
-                <tr>
-                    <td>Jul</td>
-                    <td>Aug</td>
-                    <td>Sep</td>
-                </tr>
-                <tr>
-                    <td>Oct</td>
-                    <td>Nov</td>
-                    <td>Dec</td>
-                </tr>
-            </table>
-        </div>
+          <table id="months" style="width:25%;">
+              <tr>
+                  <td>Jan</td>
+                  <td>Feb</td>
+                  <td>Mar</td>
+              </tr>
+                  <td>Apr</td>
+                  <td>May</td>
+                  <td>Jun</td>
+              <tr>
+                  <td>Jul</td>
+                  <td>Aug</td>
+                  <td>Sep</td>
+              </tr>
+              <tr>
+                  <td>Oct</td>
+                  <td>Nov</td>
+                  <td>Dec</td>
+              </tr>
+          </table>
         <div id="tag-cloud" style="width:75%;">
             <!--{{tag cloud}}-->
         </div>
     </div>
 
 
-    <h1 class="ui header" id="FirstTitle">Title of Section Below
-    	<style>
-        	#FirstTitle {background-color:#0875DE;display:inline-block;color:#FFFFFF; padding: .2em 5em .2em 1em;}
-        </style>
-    </h1>
+    <h1 class="ui header" id="FirstTitle">Title of Section Below</h1>
 
     <div class="container">
         <!--div id="major-news">This Month's Major News</div-->
@@ -116,7 +110,6 @@
         <div id="chart"></div>
         <div id="chart2"></div>
         <div class="chart"></div>
-
     </div>
 
             <script>
