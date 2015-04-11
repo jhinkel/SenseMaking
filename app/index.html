@@ -23,7 +23,7 @@
 <body ng-app="SenseMakingApp" ng-controller="MainCtrl">
     <div class="container">
 
-        <div ng-view="current-month" id="current-month" data-ng-app="MonthControllerApp">
+        <div id="current-month" data-ng-app="MonthControllerApp">
                         <p>2004</p>
                         <section id="month" data-ng-controller="MonthController">
                             {{CurrentMonth}}
@@ -37,7 +37,7 @@
     </div>
 
     <div class="container">
-        <div id="months" style="width:25%;"><!--I removed ng-view="months" -->
+        <div id="months" style="width:25%;">
             <table>
                 <tr>
                     <td>Jan</td>
@@ -59,7 +59,7 @@
                 </tr>
             </table>
         </div>
-        <div ng-view="entities" id="tag-cloud" style="width:75%;">
+        <div id="tag-cloud" style="width:75%;">
             <!--{{tag cloud}}-->
         </div>
     </div>
@@ -72,7 +72,7 @@
     </h1>
 
     <div class="container">
-        <!--div ng-view="" id="major-news">This Month's Major News</div-->
+        <!--div id="major-news">This Month's Major News</div-->
         <div class="ui vertically divided grid">
         	<div class="six column row"> <!--class change depending on # of documents that month-->
             	<div class="column major-news">
@@ -112,7 +112,7 @@
     </div><!--container-->
 
     <div class="container">
-        <div ng-view="trendline">This Month's Trend Line</div>
+        <div>This Month's Trend Line</div>
         <div id="chart"></div>
         <div id="chart2"></div>
         <div class="chart"></div>
