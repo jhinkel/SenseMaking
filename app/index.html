@@ -15,24 +15,20 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/style.css" type="text/css">
     <!-- endbuild -->
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script src="../bower_components/d3/d3.js"></script>
-    <script src="../bower_components/c3/c3.js"></script>
 </head>
-<body ng-app="SenseMakingApp" ng-controller="MainCtrl" onLoad="drawc3graph()">
+<body ng-app="SenseMakingApp" ng-controller="MainCtrl">
     <div class="container">
-
         <div id="current-month">
             <p>2004</p>
             <section id="month">
                 {{currentMonth}}
             </section>
         </div>
-        <a class="navbar-brand" href="#/" id="title">
+        <div id="title">
             <h4>The Alderwood Times</h4>
             <p>Your Best Local News Source in Alderwood</p>
             <!--img src="images/logo.png" alt="senseMaking" /-->
-        </a>
+        </div>
     </div>
 
     <div class="container">
@@ -89,138 +85,17 @@
 
     <div class="container">
         <div>This Month's Trend Line</div>
- 	
         <button type="button" id="regenerategraph" onClick="drawc3graph()">Refresh</button>
-
         <button type="button" id="load" onClick="load()">Load</button>
-        
-        <div id="chart">
-        	
-        </div>
-       
+        <div id="chart"></div>
     </div><!--container-->
-
-    <script>
-	//XML Http Request
-
-
-
-	//D3 Histogram
-		d3.json("date.json", function(data){ //data in function(data) is data in date.json
-
-		var DateArray = [];
-		var MonthArray = [];
-		var MonthXAxis = ["Jan","Feb", "Mar", "Apr", "May", "Jun","Jul","Aug","Sep","Oct","Nov", "Dec"];
-		var counts = {};
-		var CountsArray = [];
-			for(var key in data) {
-				DateArray.push(data[key]);
-				console.log(DateArray);
-				//alert (typeof data);
-			}
-
-			for(var key in DateArray) {
-				var month_temp = DateArray[key][5]+DateArray[key][6];
-				MonthArray.push(month_temp);
-			}
-			console.log(MonthArray);
-
-		for (var i = 0; i< MonthArray.length; i++){
-				var num = MonthArray[i];
-				counts[num] = counts[num] ? counts[num]+1 : 1;
-			};
-				console.log(counts);
-
-				//Push month counts into CountsArray
-		for (var key in counts){
-				CountsArray.push(counts[key]);
-				console.log(CountsArray);
-			}
-
-		
-
-		console.log(CountsArray);
-
-
-		<!--C3 Scatterplot-->
-			//var keyData = fetchData('keys.json'); {Jan, feb, mar...}
-			//var valueData = fetchData('values.json'); {20,40,50,...}
-			//var combinedData = {};
-			//for (key in keyData) {
-				//for (value in ValueData) {
-					//combinedData[key] = value;
-				//}
-			//}
-			var AllDocNumber = ['AllDocCounts'];
-			console.log(CountsArray);
-			AllDocNumber = AllDocNumber.concat(CountsArray);
-
-			window.Keyword1 = ['Keyword1'];
-			window.jsondata = [30, 20, 5, 4, 6, 5, 20, 6, 10, 20, 10, 12];
-			window.Testdata = [1,2,3,4,5,6,7,8,9,10,11,12];
-			
-		
-			function graphregenerate(){
-					Keyword1 = Testdata;
-					alert(Keyword1);}
-	
-				
-			
-			Keyword1 = Keyword1.concat(jsondata);
-			
-			
-			
-			var columns = [
-				AllDocNumber,
-				Keyword1,
-				['Keyword2', 20, 13, 9, 24, 13, 22, 4, 5, 7, 17, 12, 10],
-				['Keyword3', 30, 20, 15, 4, 2, 25, 40, 10, 12, 23, 20, 10],
-				['Keyword4', 20, 13, 9, 24, 13, 22, 10, 23, 50, 10, 45, 30],
-				['Keyword5', 13, 12, 15, 10, 16, 15, 40, 12, 40, 13, 3, 20]
-			];
-
-			window.chart = c3.generate({
-		  	bindto: '#chart',
-			  data: {
-				columns: columns,
-				type: 'bar',
-				types: {
-					Keyword1: 'spline',
-					Keyword2: 'spline',
-					Keyword3 : 'spline',
-					Keyword4 : 'spline',
-					Keyword5 : 'spline',
-				},
-
-				groups: [
-					['Keyword1','Keyword2']
-				]
-			},//data
-			color: {pattern: ['#FFCC66', '#B8B8B8 ', '#B8B8B8 ', '#B8B8B8 ', '#B8B8B8', '#B8B8B8']},//color
-			axis: {
-				x: {
-					type: 'category',
-					categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-				}
-			},//Axis
-			zoom: {enabled: true}
-			
-			
-			}); //c3 ends
-
-		}); //d3. ends
-
-	
-		
-    </script>
-
-
-     
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/d3/d3.js"></script>
+    <script src="../bower_components/c3/c3.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
