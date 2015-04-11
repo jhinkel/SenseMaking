@@ -36,7 +36,7 @@
             <button ng-repeat="month in months" ng-click="setCurrentMonth(month)">{{month}}</button>
         </div>
         <div id="tagCloud">
-            <span class="keyword" ng-repeat="keyword in keywords">{{keyword}}</span>
+            <span ng-repeat="keyword in keywords" ng-click="setCurrentKeyword(keyword)">{{keyword}}</span>
         </div>
     </div>
 
@@ -46,39 +46,11 @@
     <div class="container">
         <!--div id="major-news">This Month's Major News</div-->
         <div class="ui vertically divided grid">
-        	<div class="six column row"> <!--class change depending on # of documents that month-->
-            	<div class="column major-news">
-                	<h2>Title 1</h2>
-                <p style="text-align:justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+        	<div class="column row"> <!--class change depending on # of documents that month-->
+            	<div class="column major-news" ng-repeat="(id, body) in documents">
+                	<h2>{{id}}</h2>
+                    <p>{{body}}</p>
                 </div>
-
-
-			<div class="column major-news">
-            	<h2>Title 2</h2>
-                <p style="text-align:justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-            </div>
-
-            <div class="column major-news">
-            	<h2>Title 3</h2>
-                <p style="text-align:justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-            </div>
-
-            <div class="column major-news">
-            	<h2>Title 4</h2>
-                <p style="text-align:justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-            </div>
-
-            <div class="column major-news">
-            	<h2>Title 5</h2>
-                <p style="text-align:justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-            </div>
-
-            <div class="column major-news">
-            	<h2>Title 6</h2>
-                <p style="text-align:justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-            </div>
-
-
            </div><!--N column row, N depends on how many news articles there are in that month-->
         </div><!--ui vertically divided grid-->
     </div><!--container-->

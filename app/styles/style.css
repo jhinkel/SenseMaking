@@ -90,29 +90,32 @@ p{font-family: 'Georgia',sans-serif;}
     width: 75%;
 	height:auto;
 }
-#tagCloud .keyword {
+#tagCloud span {
   display:inline-block;
   line-height:20px;
   padding: 2px;
   color:#535353;
   font-size:16px;
-   word-wrap: break-word; 
+   word-wrap: break-word;
   float:left;
-  
+    cursor: pointer;
 }
 
-.major-news
-	{
-	border:1px solid #ADABAB;
-	padding: 2em 3em 2em 3em;
-	-webkit-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
-	-moz-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
-	box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
-		}
+.major-news{
+    border:1px solid #ADABAB;
+    padding: 2em 3em 2em 3em;
+    -webkit-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
+    -moz-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
+    box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
+}
+
 .major-news h2{
-	font-family: 'Georgia';
-	text-align:center;
-	}
+	text-align: center;
+}
+
+.major-news p {
+    text-align: justify;
+}
 
 #title h4{
 	font-size:80px;

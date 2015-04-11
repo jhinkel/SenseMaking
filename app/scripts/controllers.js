@@ -14,10 +14,18 @@ angular.module('SenseMakingApp.controllers', [])
         $scope.setCurrentMonth = function(month) {
             $scope.currentMonth = month;
 
-            API.getDocNumbers().then(function(response) {
-                $scope.keywords = response;
+            API.getDocNumbers().then(function(keywords) {
+                $scope.keywords = keywords;
             });
         };
+
+        $scope.setCurrentKeyword = function(keyword) {
+            $scope.currentKeyword = keyword;
+
+            API.getDocument(keyword).then(function(documents) {
+                $scope.documents = documents;
+            });
+        }
     })
 
     .controller('ChartCtrl', function ($scope, API) {
