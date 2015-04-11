@@ -88,12 +88,18 @@ p{font-family: 'Georgia',sans-serif;}
 
 #tagCloud {
     width: 75%;
+	height:auto;
 }
 #tagCloud .keyword {
+  display:inline-block;
+  line-height:20px;
   padding: 2px;
-  color: #005580;
+  color:#535353;
+  font-size:16px;
+   word-wrap: break-word; 
+  float:left;
+  
 }
-
 
 .major-news
 	{

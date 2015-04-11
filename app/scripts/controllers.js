@@ -9,7 +9,7 @@
 */
 angular.module('SenseMakingApp.controllers', [])
     .controller('MainCtrl', function ($scope, $log, API) {
-        $scope.months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        $scope.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
         $scope.setCurrentMonth = function(month) {
             $scope.currentMonth = month;
