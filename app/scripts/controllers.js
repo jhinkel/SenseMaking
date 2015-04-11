@@ -20,8 +20,8 @@ angular.module('SenseMakingApp.controllers', [])
         };
     })
 
-    .controller('ChartCtrl', function ($scope) {
-        d3.json("date.json", function(data){ //data in function(data) is data in date.json
+    .controller('ChartCtrl', function ($scope, API) {
+        API.getDocDates().then(function(data) {
             var DateArray = [];
             var MonthArray = [];
             var MonthXAxis = $scope.months;
@@ -111,5 +111,5 @@ angular.module('SenseMakingApp.controllers', [])
                 },//Axis
                 zoom: {enabled: true}
             }); //c3 ends
-        }); //d3. ends
+        }); //API.getDocDates ends
     }); //TrendLineCtrl ends
