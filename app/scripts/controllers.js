@@ -11,12 +11,13 @@ angular.module('SenseMakingApp.controllers', [])
     .controller('MainCtrl', function ($scope, $log, API) {
         $scope.months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-        API.getDocNumbers().then(function(response) {
-            $scope.test = response[0];
-        });
+        $scope.setCurrentMonth = function(month) {
+            $scope.currentMonth = month;
 
-        $scope.changeMonth = function(table) {
-            $scope.currentMonth = table;
-            console.log(table);
-        }
+            API.getDocNumbers().then(function(response) {
+                $scope.keywords = response;
+                console.log(response);
+                console.log(typeof(response));
+            });
+        };
     });

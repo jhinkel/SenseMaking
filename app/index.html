@@ -36,28 +36,11 @@
     </div>
 
     <div class="container">
-          <table id="months" style="width:25%;">
-              <tr>
-                  <td>Jan</td>
-                  <td>Feb</td>
-                  <td>Mar</td>
-              </tr>
-                  <td>Apr</td>
-                  <td>May</td>
-                  <td>Jun</td>
-              <tr>
-                  <td>Jul</td>
-                  <td>Aug</td>
-                  <td>Sep</td>
-              </tr>
-              <tr>
-                  <td>Oct</td>
-                  <td>Nov</td>
-                  <td>Dec</td>
-              </tr>
-          </table>
-        <div id="tag-cloud" style="width:75%;">
-            <!--{{tag cloud}}-->
+        <div id="monthList">
+            <button ng-repeat="month in months" ng-click="setCurrentMonth(month)">{{month}}</button>
+        </div>
+        <div id="tagCloud">
+            <span class="keyword" ng-repeat="keyword in keywords">{{keyword}}</span>
         </div>
     </div>
 
@@ -117,7 +100,7 @@
        
     </div><!--container-->
 
-            <script>
+    <script>
 	//XML Http Request
 
 
