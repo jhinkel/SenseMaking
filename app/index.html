@@ -3,24 +3,22 @@
 <head>
     <meta charset="utf-8">
     <title>Alderwood Times</title>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script src="C3/c3.js"></script>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
+    <link rel="stylesheet" href="../bower_components/semantic-ui/dist/semantic.min.css" type="text/css">
+    <link rel="stylesheet" href="../bower_components/c3/c3.min.css" type="text/css">
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="../bower_components/semantic-ui/dist/semantic.min.css" type="text/css">
     <link rel="stylesheet" href="styles/main.css" type="text/css">
     <link rel="stylesheet" href="styles/style.css" type="text/css">
-    <link rel="stylesheet" href="C3/c3.min.css" type="text/css">
     <!-- endbuild -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="../bower_components/d3/d3.js"></script>
+    <script src="../bower_components/c3/c3.js"></script>
 </head>
 <body ng-app="SenseMakingApp" ng-controller="MainCtrl">
     <div class="container">
@@ -72,7 +70,7 @@
         	#FirstTitle {background-color:#0875DE;display:inline-block;color:#FFFFFF; padding: .2em 5em .2em 1em;}
         </style>
     </h1>
-    
+
     <div class="container">
         <!--div ng-view="" id="major-news">This Month's Major News</div-->
         <div class="ui vertically divided grid">
@@ -87,28 +85,28 @@
             	<h2>Title 2</h2>
                 <p style="text-align:justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
             </div>
-            
+
             <div class="column major-news">
             	<h2>Title 3</h2>
                 <p style="text-align:justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
             </div>
-            
+
             <div class="column major-news">
             	<h2>Title 4</h2>
                 <p style="text-align:justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
             </div>
-            
+
             <div class="column major-news">
             	<h2>Title 5</h2>
                 <p style="text-align:justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
             </div>
-            
+
             <div class="column major-news">
             	<h2>Title 6</h2>
                 <p style="text-align:justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
             </div>
-            
-            
+
+
            </div><!--N column row, N depends on how many news articles there are in that month-->
         </div><!--ui vertically divided grid-->
     </div><!--container-->
@@ -118,13 +116,13 @@
         <div id="chart"></div>
         <div id="chart2"></div>
         <div class="chart"></div>
-        
+
     </div>
-    
+
             <script>
 	//D3 Histogram
 		d3.json("date.json", function(data){ //data in function(data) is data in date.json
-		
+
 		var DateArray = [];
 		var MonthArray = [];
 		var MonthXAxis = ["Jan","Feb", "Mar", "Apr", "May", "Jun","Jul","Aug","Sep","Oct","Nov", "Dec"];
@@ -135,47 +133,47 @@
 				console.log(DateArray);
 				//alert (typeof data);
 			}
-		
+
 			for(var key in DateArray) {
 				var month_temp = DateArray[key][5]+DateArray[key][6];
 				MonthArray.push(month_temp);
 			}
 			console.log(MonthArray);
-			
+
 		for (var i = 0; i< MonthArray.length; i++){
 				var num = MonthArray[i];
 				counts[num] = counts[num] ? counts[num]+1 : 1;
 			};
 				console.log(counts);
-				
+
 				//Push month counts into CountsArray
 		for (var key in counts){
 				CountsArray.push(counts[key]);
 				console.log(CountsArray);
 			}
-				
-		//Draw the histogram in D3					
+
+		//Draw the histogram in D3
 		var histogram = d3.layout.histogram()
 			.bins(12)
 			(CountsArray)
 
-		
+
 		console.log(CountsArray);
-		
-		
+
+
 		//set up basic scale
 		var width = 900;
 		var height = 800;
 		var margin = {top:40,right:20,bottom:30,left:40};
-		
+
 		var widthScale = d3.scale.linear()
-						.domain([0,40]) 
+						.domain([0,40])
 						.range([0,width]);
-		
+
 		var heightScale = d3.scale.linear()
 						.domain([0,40])
 						.range([0,height])
-						
+
 		var colorScale = d3.scale.linear()
 						.domain([0,40])
 						.range(["red","green"])
@@ -184,23 +182,23 @@
 			.append("svg")
 			.attr("width", width )
 			.attr("height", height);
-		
-			
+
+
 		var bars = canvas.selectAll(".rect")
 			.data(CountsArray)
 			.enter()
 				.append("rect")
-				.attr("width", function(d){return widthScale(d);}) 
+				.attr("width", function(d){return widthScale(d);})
 				.attr("height", 20)
 				.attr("x",0)
 				.attr("y",function(d,i){return i*40})
 				.attr("fill", function (d){return colorScale(d)});
-		
+
 		});
-		
-		
-		
-		
+
+
+
+
 		<!--C3 Scatterplot-->
 			var chart = c3.generate({
 			bindto: '#chart2',
@@ -211,7 +209,7 @@
 			  ]
 			}
 		});
-		
+
     </script>
 
 
@@ -220,7 +218,6 @@
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-route/angular-route.js"></script>
     <script src="../bower_components/angular-animate/angular-animate.js"></script>
-    <script src="../bower_components/d3/d3.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
