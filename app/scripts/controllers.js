@@ -18,7 +18,9 @@ angular.module('SenseMakingApp.controllers', [])
                 $scope.keywords = response;
             });
         };
+    })
 
+    .controller('ChartCtrl', function ($scope) {
         d3.json("date.json", function(data){ //data in function(data) is data in date.json
             var DateArray = [];
             var MonthArray = [];
@@ -40,7 +42,7 @@ angular.module('SenseMakingApp.controllers', [])
             for (var i = 0; i< MonthArray.length; i++){
                 var num = MonthArray[i];
                 counts[num] = counts[num] ? counts[num]+1 : 1;
-            };
+            }
             console.log(counts);
 
             //Push month counts into CountsArray
@@ -108,9 +110,6 @@ angular.module('SenseMakingApp.controllers', [])
                     }
                 },//Axis
                 zoom: {enabled: true}
-
-
             }); //c3 ends
-
         }); //d3. ends
-    });
+    }); //TrendLineCtrl ends
