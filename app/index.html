@@ -122,6 +122,10 @@
     </div>
     
             <script>
+	//XML Http Request
+		
+	
+	
 	//D3 Histogram
 		d3.json("date.json", function(data){ //data in function(data) is data in date.json
 		
@@ -163,54 +167,73 @@
 		console.log(CountsArray);
 		
 		
-		//set up basic scale
-		var width = 900;
-		var height = 800;
-		var margin = {top:40,right:20,bottom:30,left:40};
 		
-		var widthScale = d3.scale.linear()
-						.domain([0,40]) 
-						.range([0,width]);
-		
-		var heightScale = d3.scale.linear()
-						.domain([0,40])
-						.range([0,height])
-						
-		var colorScale = d3.scale.linear()
-						.domain([0,40])
-						.range(["red","green"])
-
-		var canvas = d3.select ("body")
-			.append("svg")
-			.attr("width", width )
-			.attr("height", height);
-		
-			
-		var bars = canvas.selectAll(".rect")
-			.data(CountsArray)
-			.enter()
-				.append("rect")
-				.attr("width", function(d){return widthScale(d);}) 
-				.attr("height", 20)
-				.attr("x",0)
-				.attr("y",function(d,i){return i*40})
-				.attr("fill", function (d){return colorScale(d)});
-		
-		});
+	
 		
 		
 		
 		
 		<!--C3 Scatterplot-->
+			//var keyData = fetchData('keys.json'); {Jan, feb, mar...}
+			//var valueData = fetchData('values.json'); {20,40,50,...}
+			//var combinedData = {};
+			//for (key in keyData) {
+				//for (value in ValueData) {
+					//combinedData[key] = value;
+				//}
+			//}
+			var AllDocNumber = ['AllDocCounts'];
+			console.log(CountsArray);
+			AllDocNumber = AllDocNumber.concat(CountsArray);
+			
+			var Keyword1 = ['Keyword1'];
+			var jsondata = [30, 20, 5, 4, 6, 5, 20, 6, 10, 20, 10, 12];
+			Keyword1 = Keyword1.concat(jsondata);
+			
+			var columns = [
+				AllDocNumber,
+				Keyword1,
+				['Keyword2', 20, 13, 9, 24, 13, 22, 4, 5, 7, 17, 12, 10],
+				['Keyword3', 30, 20, 15, 4, 2, 25, 40, 10, 12, 23, 20, 10],
+				['Keyword4', 20, 13, 9, 24, 13, 22, 10, 23, 50, 10, 45, 30],
+				['Keyword5', 13, 12, 15, 10, 16, 15, 40, 12, 40, 13, 3, 20]
+			];
+			
 			var chart = c3.generate({
 			bindto: '#chart2',
-			data: {
-			  columns: [
-				['data1', 30, 200, 100, 400, 150, 250],
-				['data2', 50, 20, 10, 40, 15, 25]
-			  ]
-			}
-		});
+			  data: {
+				columns: columns,
+				type: 'bar',
+				types: {
+					Keyword1: 'spline',
+					Keyword2: 'spline',
+					Keyword3 : 'spline',
+					Keyword4 : 'spline',
+					Keyword5 : 'spline',
+				},
+
+				groups: [
+					['Keyword1','Keyword2']
+				]
+
+			},//data
+			
+			
+			color: {
+				pattern: ['#FFCC66', '#B8B8B8 ', '#B8B8B8 ', '#B8B8B8 ', '#B8B8B8', '#B8B8B8']
+			},//color
+			
+			axis: {
+				x: {
+					type: 'category',
+					categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+				}
+			}//Axis
+		}); //c3 ends
+
+
+	
+		}); //d3. ends
 		
     </script>
 
