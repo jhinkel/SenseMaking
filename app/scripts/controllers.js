@@ -26,20 +26,19 @@ angular.module('SenseMakingApp.controllers', [])
 								$scope.SetSentiment = function (frequency){
 										var polarity = "positive";
 										var sentiment = Math.random();
+										var r = Math.ceil (255 * sentiment);
+										var g = Math.ceil (255 * sentiment);
+										var b = Math.ceil (255 * sentiment);
+										
 										if (polarity = "positive"){
-				
-											var r = Math.ceil (5 * sentiment);
-											var g = Math.ceil (255 * sentiment);
-											var b = Math.ceil (5 * sentiment);
+											g += 150;
 											console.log(sentiment);
 											document.getElementById("sentiment").style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
 										}//if positive
 										
-										else{
-											var r = Math.ceil (255 * sentiment);
-											var g = Math.ceil (5 * sentiment);
-											var b = Math.ceil (5 * sentiment);
-											console.log(sentiment);
+										else {
+											r += 150;
+											console.log(polarity);
 											document.getElementById("sentiment").style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
 											}//else
 									}//function(frequency)
