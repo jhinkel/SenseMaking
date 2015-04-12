@@ -13,9 +13,14 @@ angular.module('SenseMakingApp.controllers', [])
 
         $scope.setCurrentMonth = function (month) {
             $scope.currentMonth = month;
+            $scope.keywords = {};
 
-            API.getDocNumbers().then(function (keywords) {
-                $scope.keywords = keywords;
+            API.getDocumentsByMonth(month).then(function (documentIds) {
+                for (var documentId in documentIds) {
+                    API.callAylien(documentId).then(function (response) {
+                        angular.extend($scope.keywords, response[0]['keyword']);
+                    });
+                }
             });
         };
 

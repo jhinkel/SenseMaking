@@ -11,7 +11,82 @@ angular.module('SenseMakingApp.services', [])
                         return JSON.parse(sessionStorage.getItem('Aylien'));
                     },
                     function (httpError) {
-                        throw httpError.status + " : " + httpError.data;
+                        //throw httpError.status + " : " + httpError.data;
+                        return {
+                            0: {
+                                organization: [
+                                    "Alderwood City Council",
+                                    "Alderwood High School",
+                                    "Hospital",
+                                    "United Methodist Church"
+                                ],
+                                location: [
+                                    "Tacoma",
+                                    "Washington",
+                                    "Centennial Square"
+                                ],
+                                keyword: [
+                                    "teachers in Alderwood",
+                                    "Alderwood City",
+                                    "City of Alderwood",
+                                    "teachers don t help fix schools",
+                                    "school year",
+                                    "Alderwood",
+                                    "teachers",
+                                    "City",
+                                    "years",
+                                    "great",
+                                    "Panni",
+                                    "programs",
+                                    "schools",
+                                    "people",
+                                    "Blood",
+                                    "units",
+                                    "recreation",
+                                    "life",
+                                    "money",
+                                    "Washington"
+                                ],
+                                date: [
+                                    "Monday",
+                                    "Election",
+                                    "summer",
+                                    "last year",
+                                    "Saturday",
+                                    "Jan. 4"
+                                ],
+                                money: [
+                                    "$30,000",
+                                    "$10,000"
+                                ],
+                                person: [
+                                    "John Sarducci",
+                                    "John Panni",
+                                    "Aiken",
+                                    "Steve Evanswill",
+                                    "Steve Evans",
+                                    "Evans Olivas",
+                                    "Ron Olivas",
+                                    "Christine Gregoire",
+                                    "Rita Blunk",
+                                    "Bob Story",
+                                    "Max",
+                                    "Ella Mae Lochner",
+                                    "Myrtis Lang",
+                                    "Alice Benedetti",
+                                    "Phyllis Morris",
+                                    "Trude Meadowcroft",
+                                    "Letha Grubb",
+                                    "Lu Ann Roach",
+                                    "Nita Coleman",
+                                    "Ruth Stark",
+                                    "Marie Handy"
+                                ]
+                            },
+                            polarity: "positive",
+                            polarityConfidence: 0.98267326732673,
+                            subjectivityConfidence: 1
+                        };
                     }
                 );
             },
@@ -80,7 +155,19 @@ angular.module('SenseMakingApp.services', [])
                         return JSON.parse(sessionStorage.getItem('documentsByMonth'));
                     },
                     function (httpError) {
-                        throw httpError.status + " : " + httpError.data;
+                        //throw httpError.status + " : " + httpError.data;
+                        return [
+                            "1101163613791",
+                            "1101163706824",
+                            "1101163726024",
+                            "1101163941120",
+                            "1101163941122",
+                            "1101234275352",
+                            "1101243250482",
+                            "1101243272357",
+                            "1101243294357",
+                            "1101243315873"
+                        ];
                     }
                 );
             }
