@@ -23,8 +23,10 @@ angular.module('SenseMakingApp.controllers', [])
 						var keywords = response[0]['keyword'];
 						for (var keyword in keywords){
 							API.getDocKeywordFrequency(documentId, keyword).then(
-								function (frequency){
-									console.log(Math.random());
+								$scope.SetSentiment = function (frequency){
+									var sentiment = Math.random();
+									console.log(sentiment);
+									document.getElementById("sentiment").style.color = "blue";
 									
 									}//function(frequency)
 							); //API.getDocKeywordFrequency
