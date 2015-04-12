@@ -90,7 +90,7 @@ angular.module('SenseMakingApp.services', [])
                     }
                 );
             },//callAylien
-			
+
             getDocKeywordFrequency: function (docNumber, keyword) {
                 return $http.get(api + "Frequency.php?filename=" + docNumber + "&keyword=" + keyword).then(
                     function (response) {
@@ -103,7 +103,7 @@ angular.module('SenseMakingApp.services', [])
                     }
                 );
             },//getDocKeywordFrequency
-			
+
             getDocDates: function () {
                 return $http.get(api + "dateParser.php").then(
                     function (response) {
@@ -173,8 +173,31 @@ angular.module('SenseMakingApp.services', [])
                         ];
                     }
                 );
-            } //getDocumentsByMonth
-			
-			
+            }, //getDocumentsByMonth
+            getFrequencyByMonth: function (keyword) {
+                return $http.get(api + "FrequencyByMonth.php?keyword=" + keyword).then(
+                    function (response) {
+                        sessionStorage.setItem('frequencyByMonth', JSON.stringify(response));
+                        return JSON.parse(sessionStorage.getItem('frequencyByMonth'));
+                    },
+                    function (httpError) {
+                        //throw httpError.status + " : " + httpError.data;
+                        return [
+                            66,
+                            119,
+                            245,
+                            293,
+                            365,
+                            417,
+                            531,
+                            708,
+                            872,
+                            1044,
+                            1163,
+                            1167
+                        ];
+                    }
+                )
+            }
         };
     });

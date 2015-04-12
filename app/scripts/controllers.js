@@ -16,15 +16,15 @@ angular.module('SenseMakingApp.controllers', [])
             $scope.keywords = {};
 
             API.getDocumentsByMonth(month).then(function (documentIds) {
-				
-			
+
+
 				//How the function below flows: find documentId --> find a specific keyword --> find sentiment & title/author
                 for (var documentId in documentIds) {
 				$scope.documentId = documentId;
                     API.callAylien(documentId).then(function (response) {
                         angular.extend($scope.keywords, response[0]['keyword']);
 						var keywords = response[0]['keyword'];
-							
+
 						for (var keyword in keywords){
 							API.getDocKeywordFrequency(documentId, keyword).then(
 								$scope.SetDocContents = function SetDocContents(frequency){
@@ -32,7 +32,7 @@ angular.module('SenseMakingApp.controllers', [])
 										var sentiment = Math.random();
 										var r = Math.ceil (255 * sentiment);
 										var g = Math.ceil (255 * sentiment);
-										var b = Math.ceil (255 * sentiment);			
+										var b = Math.ceil (255 * sentiment);
 										window.str = "AHS principal talks about course changes Story by: John Panni Date Published to Web: 4/1/2004"
 										window.GetTitleIndex = str.indexOf("Story");
 										window.GetAuthorIndex = str.indexOf("Date");
@@ -48,27 +48,27 @@ angular.module('SenseMakingApp.controllers', [])
 											console.log(sentiment);
 											document.getElementById("sentiment").style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
 										}//if positive
-										
+
 										else {
 											r += 150;
 											console.log(polarity);
 											document.getElementById("sentiment").style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
 											}//else
 									}//function SetSentiment
-								
-									
+
+
 							); //API.getDocKeywordFrequency
-							
+
 						}//for(keyword in keywords)
 					});//API.callAylien(documentId), then
 				}//for
-				
-				
-				
+
+
+
 			});//API.getDocumentsByMonth
-			
-			
-			
+
+
+
 		}//setCurrentMonth
 
         $scope.setCurrentKeyword = function (keyword) {
@@ -78,15 +78,12 @@ angular.module('SenseMakingApp.controllers', [])
                 $scope.documents = documents;
             });
 
-            API.getDocDates().then(function (data) {
+            API.getFrequencyByMonth(keyword).then(function (frequencies) {
                 chart.load({
                     columns: [
-                        ['Keyword1', 30, 20, 5, 4, 6, 5, 20, 6, 10, 20, 10, 12],
-                        ['Keyword2', 20, 13, 9, 24, 13, 22, 4, 5, 7, 17, 12, 10],
-                        ['Keyword3', 30, 20, 15, 4, 2, 25, 40, 10, 12, 23, 20, 10],
-                        ['Keyword4', 20, 13, 9, 24, 13, 22, 10, 23, 50, 10, 45, 30],
-                        ['Keyword5', 13, 12, 15, 10, 16, 15, 40, 12, 40, 13, 3, 20]
-                    ]
+                        [keyword].concat(frequencies)
+                    ],
+                    type: 'line'
                 });
             });
         };
@@ -132,13 +129,6 @@ angular.module('SenseMakingApp.controllers', [])
                         ['AllDocCounts'].concat(CountsArray)
                     ],
                     type: 'bar',
-                    types: {
-                        Keyword1: 'spline',
-                        Keyword2: 'spline',
-                        Keyword3: 'spline',
-                        Keyword4: 'spline',
-                        Keyword5: 'spline'
-                    },
                     groups: [
                         ['Keyword1', 'Keyword2']
                     ]
