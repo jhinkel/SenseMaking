@@ -112,9 +112,11 @@ angular.module('SenseMakingApp.controllers', [])
 				tooltip: {
 					grouped: false,
 					format: {
-						title: function (d) { return "Frequency" },
+						title: function (d) { 
+							return "Frequency" +  "{{id}}";
+							 },
 						value: function (value, ratio, id) {
-							var format = id === 'data1' ? d3.format(',') : d3.format('$');
+							var format = id === 'data1' ? d3.format(',') : d3.format("");
 							return format(value);
 						}
 			// =           value: d3.format(',') // apply this format to both y and y2
