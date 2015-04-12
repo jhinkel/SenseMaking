@@ -5,7 +5,7 @@ angular.module('SenseMakingApp.services', [])
         var api = "http://www.johnhinkel.com/SenseMaking/api/";
         return {
             callAylien: function (docNumber) {
-                return $http.get(api + "AylienCalls.php?filename=\"" + docNumber + ".txt\"").then(
+                return $http.get(api + "AylienCalls.php?filename=" + docNumber).then(
                     function (response) {
                         sessionStorage.setItem('Aylien', JSON.stringify(response));
                         return JSON.parse(sessionStorage.getItem('Aylien'));
@@ -16,7 +16,7 @@ angular.module('SenseMakingApp.services', [])
                 );
             },
             getDocKeywordFrequency: function (docNumber, keyword) {
-                return $http.get(api + "Frequency.php?filename=\"" + docNumber + ".txt\"&keyword=\"" + keyword + "\"").then(
+                return $http.get(api + "Frequency.php?filename=" + docNumber + "&keyword=" + keyword).then(
                     function (response) {
                         sessionStorage.setItem('docKeywordFrequency', JSON.stringify(response));
                         return JSON.parse(sessionStorage.getItem('docKeywordFrequency'));
@@ -51,7 +51,7 @@ angular.module('SenseMakingApp.services', [])
                 );
             },
             getDocument: function (docNumber) {
-                return $http.get(api + "DocFetcher.php?filename=\"" + docNumber + ".txt\"").then(
+                return $http.get(api + "DocFetcher.php?filename=" + docNumber).then(
                     function (response) {
                         sessionStorage.setItem('document', JSON.stringify(response));
                         return JSON.parse(sessionStorage.getItem('document'));
@@ -59,7 +59,28 @@ angular.module('SenseMakingApp.services', [])
                     function (httpError) {
                         //throw httpError.status + " : " + httpError.data;
                         return {123059861349057: "This is a document body"};
-
+                    }
+                );
+            },
+            getDocumentsByKeyword: function (keyword) {
+                return $http.get(api + "KeywordMatcher.php?keyword=" + keyword).then(
+                    function (response) {
+                        sessionStorage.setItem('documentsByKeyword', JSON.stringify(response));
+                        return JSON.parse(sessionStorage.getItem('documentsByKeyword'));
+                    },
+                    function (httpError) {
+                        throw httpError.status + " : " + httpError.data;
+                    }
+                );
+            },
+            getDocumentsByMonth: function (month) {
+                return $http.get(api + "DocsByMonth.php?month=" + month).then(
+                    function (response) {
+                        sessionStorage.setItem('documentsByMonth', JSON.stringify(response));
+                        return JSON.parse(sessionStorage.getItem('documentsByMonth'));
+                    },
+                    function (httpError) {
+                        throw httpError.status + " : " + httpError.data;
                     }
                 );
             }

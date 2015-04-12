@@ -47,28 +47,22 @@ angular.module('SenseMakingApp.controllers', [])
             var CountsArray = [];
             for (var key in data) {
                 DateArray.push(data[key]);
-                console.log(DateArray);
-                //alert (typeof data);
             }
 
             for (var key in DateArray) {
                 var month_temp = DateArray[key][5] + DateArray[key][6];
                 MonthArray.push(month_temp);
             }
-            console.log(MonthArray);
 
             for (var i = 0; i < MonthArray.length; i++) {
                 var num = MonthArray[i];
                 counts[num] = counts[num] ? counts[num] + 1 : 1;
             }
-            console.log(counts);
 
             //Push month counts into CountsArray
             for (var key in counts) {
                 CountsArray.push(counts[key]);
-                console.log(CountsArray);
             }
-            console.log(CountsArray);
 
             <!--C3 Scatterplot-->
             //var keyData = fetchData('keys.json'); {Jan, feb, mar...}
