@@ -129,9 +129,9 @@ angular.module('SenseMakingApp.controllers', [])
                         ['AllDocCounts'].concat(CountsArray)
                     ],
                     type: 'bar',
-                    groups: [
-                        ['Keyword1', 'Keyword2']
-                    ]
+                    axes: {
+                        'AllDocCounts': 'y2'
+                    }
                 },
                 color: {
                     pattern: ['#FFCC66', '#B8B8B8 ', '#B8B8B8 ', '#B8B8B8 ', '#B8B8B8', '#B8B8B8']
@@ -140,6 +140,19 @@ angular.module('SenseMakingApp.controllers', [])
                     x: {
                         type: 'category',
                         categories: $scope.months
+                    },
+                    y: {
+                        label: {
+                            text: 'Number of documents',
+                            position: 'outer-middle'
+                        }
+                    },
+                    y2: {
+                        show: true,
+                        label: {
+                            text: 'Frequency of keyword',
+                            position: 'outer-middle'
+                        }
                     }
                 },
                 zoom: {
@@ -150,7 +163,7 @@ angular.module('SenseMakingApp.controllers', [])
                     grouped: false,
                     format: {
                         title: function (d) {
-                            return "Frequency" + "{{id}}";
+                            return "Frequency";
                         },
                         value: function (value, ratio, id) {
                             var format = id === 'data1' ? d3.format(',') : d3.format("");
