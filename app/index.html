@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="styles/style.css" type="text/css">
     <!-- endbuild -->
 </head>
+<div class="ui inverted segment"></div>
 <body ng-app="SenseMakingApp" ng-controller="MainCtrl">
     <div class="container">
         <div id="current-month">
@@ -39,20 +40,35 @@
         </div>
     </div>
 
-    <h1 class="ui header" id="FirstTitle">Title of Section Below</h1>
+    <h1 class="ui header" id="FirstTitle">All Documents from {{currentMonth}}</h1>
     <div class="container">
         <!--div id="major-news">This Month's Major News</div-->
         <div class="ui vertically divided grid">
         	<div class="column row"> <!--class change depending on # of documents that month-->
             	<div class="column major-news" ng-repeat="(id, body) in documents">
-                	<h2>{{id}}</h2>
-                    <p>{{body}}</p>
+                	<h2 id="title1">{{id}}</h2>
+                    <h5 id="author1"></h5>
+                    <p id="body1">{{body}}</p>
+                    
+                    <script>
+                    	function myFunction() {
+							var str = "AHS principal talks about course changes Story by: John Panni Date Published to Web: 4/1/2004"
+							var GetTitleIndex = str.indexOf("Story");
+							var GetAuthorIndex = str.indexOf("Date");
+							var title = str.substring(0, GetTitleIndex);
+							var author = str.substring(GetAuthorIndex,GetTitleIndex);
+							document.getElementById("title1").innerHTML = title;
+							document.getElementById("author1").innerHTML += author;
+						}
+                    
+                    </script>
+                    <div id="demo"><button onClick="myFunction()">Substring</button></div>
                 </div>
            </div><!--N column row, N depends on how many news articles there are in that month-->
         </div><!--ui vertically divided grid-->
     </div><!--container-->
 
-    <h1 class="ui header">This Month's Trend Line</h1>
+    <h1 class="ui header">Trend Line of {{currentMonth}}</h1>
     <div class="container" id="chart" ng-controller="ChartCtrl"></div>
 
     <div id="demo"></div>

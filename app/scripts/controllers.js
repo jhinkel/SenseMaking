@@ -70,7 +70,6 @@ angular.module('SenseMakingApp.controllers', [])
             //}
             //}
             var AllDocNumber = ['AllDocCounts'];
-            console.log(CountsArray);
             AllDocNumber = AllDocNumber.concat(CountsArray);
             var columns = [
                 AllDocNumber,
@@ -108,7 +107,21 @@ angular.module('SenseMakingApp.controllers', [])
                 },
                 zoom: {
                     enabled: true
-                }
+                },
+				//tooltip
+				tooltip: {
+					grouped: false,
+					format: {
+						title: function (d) { return "Frequency" },
+						value: function (value, ratio, id) {
+							var format = id === 'data1' ? d3.format(',') : d3.format('$');
+							return format(value);
+						}
+			// =           value: d3.format(',') // apply this format to both y and y2
+					}
+				}
+				
+				
             }); //c3 ends
         }); //API.getDocDates ends
     }); //TrendLineCtrl ends
