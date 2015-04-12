@@ -10,6 +10,7 @@ for($i=0;$i<sizeof($files);$i++){
 		
 	if($_GET["filename"].".txt" == $files[$i]){
 		$string= file_get_contents($path."/".$files[$i]);
+		$string = addslashes($string);
 	}
 }
 echo $string;
