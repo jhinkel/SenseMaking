@@ -32,4 +32,4 @@ johnhinkel.com/SenseMaking/api/dateParser.php
 johnhinkel.com/SenseMaking/api/DocNumbers.php
 johnhinkel.com/SenseMaking/api/Frequency.php?filename=1101162433811&keyword=Alderwood
 johnhinkel.com/SenseMaking/api/AylienCalls.php?filename=1101162433811
-
+johnhinkel.com/SenseMaking/api/KeywordMatcher.php?keyword=Alderwood High
