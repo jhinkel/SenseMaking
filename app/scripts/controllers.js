@@ -42,8 +42,7 @@ angular.module('SenseMakingApp.controllers', [])
 										window.author = str.substring(GetAuthorIndex,GetTitleIndex);
 										window.publishDate = str.substring(GetPublishDate + 4, GetPublishDateStop + 4);
 										document.getElementById("title1").innerHTML = title;
-										document.getElementById("author1").innerHTML = author;
-										document.getElementById("publishDate").innerHTML = publishDate;
+										document.getElementById("AuthorAndPublishDate1").innerHTML = author + "|" + publishDate;
 										if (polarity = "positive"){
 											g += 150;
 											console.log(sentiment);

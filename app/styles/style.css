@@ -21,11 +21,11 @@ body {
   box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.53);
 }
 
-h2,h3, h5 {
+h2,h3, h5, h4 {
   font-family: 'Georgia', sans-serif;
 }
 
-h1, h4 {
+h1{
   font-family: 'OldeEnglish', sans-serif;
   font-size: 3em;
 }
@@ -149,7 +149,7 @@ p{font-family: 'Georgia',sans-serif;}
     text-align: justify;
 }
 
-#title h4{
+#title h1{
 	font-size:100px;
 	text-decoration:none;
 	color:black;
@@ -181,3 +181,14 @@ p{font-family: 'Georgia',sans-serif;}
 .c3-chart > * {
     cursor: help !important;
 }
+
+.DocTitle{
+	padding-top:1em;
+	margin-bottom:5px;
+	float:none;}
+.DocAuthorAndDate{
+	display:block;
+	margin-top:-3px;
+	padding-bottom:2px;}
+
+.DocBody

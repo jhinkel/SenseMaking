@@ -26,7 +26,7 @@
             </section>
         </div>
         <div id="title">
-            <h4>The Alderwood Times</h4>
+            <h1>The Alderwood Times</h1>
             <p>Your Best Local News Source in Alderwood</p>
             <!--img src="images/logo.png" alt="senseMaking" /-->
         </div>
@@ -46,14 +46,11 @@
         <div class="ui vertically divided grid">
         	<div class="column row"> <!--class change depending on # of documents that month-->
             	<div class="column major-news" ng-repeat="(id, body) in documents">
-                	<h2 id="title1">{{id}}</h2>
-                    <h5 id="author1">{{author}}</h5>
-                    <h5 id="publishDate">{{publishdate}}</h5>
-                    <p id="body1">{{body}}</p>
+                	<h3 class="DocTitle" id="title1">{{id}}</h3>
+                    <h5 class="DocAuthorAndDate dividing header" id="AuthorAndPublishDate1">{{author}}</h5>
+                    <p class="DocBody" id="body1">{{body}}</p>
                     <br></br>
                     <div id="sentiment" class="ui top attached label customize-color" ng-init="SetDocContents(frequency)">Sentiment Color</div>
-                                    
-                    <div id="demo" ng-init="TitleAndAuthor()"><button>Test</button></div>
                 </div>
            </div><!--N column row, N depends on how many news articles there are in that month-->
         </div><!--ui vertically divided grid-->
