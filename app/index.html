@@ -47,24 +47,13 @@
         	<div class="column row"> <!--class change depending on # of documents that month-->
             	<div class="column major-news" ng-repeat="(id, body) in documents">
                 	<h2 id="title1">{{id}}</h2>
-                    <h5 id="author1"></h5>
+                    <h5 id="author1">{{author}}</h5>
+                    <h5 id="publishDate">{{publishdate}}</h5>
                     <p id="body1">{{body}}</p>
                     <br></br>
-                    <div id="sentiment" class="ui top attached label customize-color" ng-init="SetSentiment(frequency)">Sentiment Color</div>
-                    
-                    <script>
-                    	function myFunction() {
-							var str = "AHS principal talks about course changes Story by: John Panni Date Published to Web: 4/1/2004"
-							var GetTitleIndex = str.indexOf("Story");
-							var GetAuthorIndex = str.indexOf("Date");
-							var title = str.substring(0, GetTitleIndex);
-							var author = str.substring(GetAuthorIndex,GetTitleIndex);
-							document.getElementById("title1").innerHTML = title;
-							document.getElementById("author1").innerHTML += author;
-						}
-
-                    </script>
-                    <div id="demo"><button onClick="myFunction()" id="substring">Substring</button></div>
+                    <div id="sentiment" class="ui top attached label customize-color" ng-init="SetDocContents(frequency)">Sentiment Color</div>
+                                    
+                    <div id="demo" ng-init="TitleAndAuthor()"><button>Test</button></div>
                 </div>
            </div><!--N column row, N depends on how many news articles there are in that month-->
         </div><!--ui vertically divided grid-->
