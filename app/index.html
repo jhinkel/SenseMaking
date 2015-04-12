@@ -50,13 +50,13 @@
                     <h5 class="DocAuthorAndDate dividing header" id="AuthorAndPublishDate1">{{author}}</h5>
                     <p class="DocBody" id="body1">{{body}}</p>
                     <br></br>
-                    <div id="sentiment" class="ui top attached label customize-color" ng-init="SetDocContents(frequency)">Sentiment Color</div>
+                    <div id="sentiment" class="ui top attached label customize-color" ng-init="SetDocContents(frequency)"></div>
                 </div>
            </div><!--N column row, N depends on how many news articles there are in that month-->
         </div><!--ui vertically divided grid-->
     </div><!--container-->
 
-    <h1 class="ui header">Trend Line of {{currentMonth}}</h1>
+    <h1 class="ui header" id="trendline">Trend Line of {{currentMonth}}</h1>
     <div class="container" id="chart"></div>
 
     <div id="demo"></div>
