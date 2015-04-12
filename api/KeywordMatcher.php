@@ -12,7 +12,7 @@ for($i=0;$i<sizeof($files);$i++){
 		
 	$string= file_get_contents($path."/".$files[$i]);
 	if(substr_count($string,$keyword)>=1){
-		$filename = rtrim($files[$i],".txt")
+		$filename = rtrim($files[$i],".txt");
 		array_push($retDocs,$filename);
 	}
 	
