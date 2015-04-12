@@ -34,3 +34,4 @@ johnhinkel.com/SenseMaking/api/Frequency.php?filename=1101162433811&keyword=Alde
 johnhinkel.com/SenseMaking/api/AylienCalls.php?filename=1101162433811
 johnhinkel.com/SenseMaking/api/KeywordMatcher.php?keyword=Alderwood High
 johnhinkel.com/SenseMaking/api/DocsByMonth.php?month=feb
+johnhinkel.com/SenseMaking/api/FrequencyByMonth.php?keyword=Alderwood
