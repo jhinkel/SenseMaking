@@ -17,7 +17,6 @@
     <!-- endbuild -->
 </head>
 <body ng-app="SenseMakingApp" ng-controller="MainCtrl">
-	<div class="ui inverted segment"></div>
     <div class="container">
         <div id="current-month">
             <p>2004</p>
@@ -31,7 +30,6 @@
             <!--img src="images/logo.png" alt="senseMaking" /-->
         </div>
     </div>
-
     <div class="container">
         <div id="monthList">
             <button ng-repeat="month in months" ng-click="setCurrentMonth(month)">{{month}}</button>
@@ -41,9 +39,7 @@
         </div>
     </div>
 
-
     <h1 class="ui header" id="FirstTitle">Title of Section Below</h1>
-
     <div class="container">
         <!--div id="major-news">This Month's Major News</div-->
         <div class="ui vertically divided grid">
@@ -56,12 +52,8 @@
         </div><!--ui vertically divided grid-->
     </div><!--container-->
 
-    <div class="container">
-        <div>This Month's Trend Line</div>
-        <button type="button" id="regenerategraph" onClick="drawc3graph()">Refresh</button>
-        <button type="button" id="load" onClick="load()">Load</button>
-        <div id="chart" ng-controller="ChartCtrl"></div>
-    </div><!--container-->
+    <h1 class="ui header">This Month's Trend Line</h1>
+    <div class="container" id="chart" ng-controller="ChartCtrl"></div>
 
     <div id="demo"></div>
     <!-- build:js(.) scripts/vendor.js -->

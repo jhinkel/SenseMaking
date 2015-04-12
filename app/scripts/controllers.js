@@ -72,20 +72,9 @@ angular.module('SenseMakingApp.controllers', [])
             var AllDocNumber = ['AllDocCounts'];
             console.log(CountsArray);
             AllDocNumber = AllDocNumber.concat(CountsArray);
-
-            window.Keyword1 = ['Keyword1'];
-            window.jsondata = [30, 20, 5, 4, 6, 5, 20, 6, 10, 20, 10, 12];
-            window.Testdata = [1,2,3,4,5,6,7,8,9,10,11,12];
-
-            function graphregenerate(){
-                Keyword1 = Testdata;
-                alert(Keyword1);
-            }
-            Keyword1 = Keyword1.concat(jsondata);
-
             var columns = [
                 AllDocNumber,
-                Keyword1,
+                ['Keyword1', 30, 20, 5, 4, 6, 5, 20, 6, 10, 20, 10, 12],
                 ['Keyword2', 20, 13, 9, 24, 13, 22, 4, 5, 7, 17, 12, 10],
                 ['Keyword3', 30, 20, 15, 4, 2, 25, 40, 10, 12, 23, 20, 10],
                 ['Keyword4', 20, 13, 9, 24, 13, 22, 10, 23, 50, 10, 45, 30],
