@@ -11,50 +11,60 @@ angular.module('SenseMakingApp.controllers', [])
     .controller('MainCtrl', function ($scope, $log, API) {
         $scope.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-        $scope.setCurrentMonth = function(month) {
+        $scope.setCurrentMonth = function (month) {
             $scope.currentMonth = month;
 
-            API.getDocNumbers().then(function(keywords) {
+            API.getDocNumbers().then(function (keywords) {
                 $scope.keywords = keywords;
             });
         };
 
-        $scope.setCurrentKeyword = function(keyword) {
+        $scope.setCurrentKeyword = function (keyword) {
             $scope.currentKeyword = keyword;
 
-            API.getDocument(keyword).then(function(documents) {
+            API.getDocument(keyword).then(function (documents) {
                 $scope.documents = documents;
             });
-        }
-    })
 
-    .controller('ChartCtrl', function ($scope, API) {
-        API.getDocDates().then(function(data) {
+            API.getDocDates().then(function (data) {
+                chart.load({
+                    columns: [
+                        ['Keyword1', 30, 20, 5, 4, 6, 5, 20, 6, 10, 20, 10, 12],
+                        ['Keyword2', 20, 13, 9, 24, 13, 22, 4, 5, 7, 17, 12, 10],
+                        ['Keyword3', 30, 20, 15, 4, 2, 25, 40, 10, 12, 23, 20, 10],
+                        ['Keyword4', 20, 13, 9, 24, 13, 22, 10, 23, 50, 10, 45, 30],
+                        ['Keyword5', 13, 12, 15, 10, 16, 15, 40, 12, 40, 13, 3, 20]
+                    ]
+                });
+            });
+        };
+
+        API.getDocDates().then(function (data) {
             var DateArray = [];
             var MonthArray = [];
             var MonthXAxis = $scope.months;
             var counts = {};
             var CountsArray = [];
-            for(var key in data) {
+            for (var key in data) {
                 DateArray.push(data[key]);
                 console.log(DateArray);
                 //alert (typeof data);
             }
 
-            for(var key in DateArray) {
+            for (var key in DateArray) {
                 var month_temp = DateArray[key][5] + DateArray[key][6];
                 MonthArray.push(month_temp);
             }
             console.log(MonthArray);
 
-            for (var i = 0; i < MonthArray.length; i++){
+            for (var i = 0; i < MonthArray.length; i++) {
                 var num = MonthArray[i];
-                counts[num] = counts[num] ? counts[num]+1 : 1;
+                counts[num] = counts[num] ? counts[num] + 1 : 1;
             }
             console.log(counts);
 
             //Push month counts into CountsArray
-            for (var key in counts){
+            for (var key in counts) {
                 CountsArray.push(counts[key]);
                 console.log(CountsArray);
             }
@@ -68,22 +78,13 @@ angular.module('SenseMakingApp.controllers', [])
             //for (value in ValueData) {
             //combinedData[key] = value;
             //}
-            //}
-            var AllDocNumber = ['AllDocCounts'];
-            AllDocNumber = AllDocNumber.concat(CountsArray);
-            var columns = [
-                AllDocNumber,
-                ['Keyword1', 30, 20, 5, 4, 6, 5, 20, 6, 10, 20, 10, 12],
-                ['Keyword2', 20, 13, 9, 24, 13, 22, 4, 5, 7, 17, 12, 10],
-                ['Keyword3', 30, 20, 15, 4, 2, 25, 40, 10, 12, 23, 20, 10],
-                ['Keyword4', 20, 13, 9, 24, 13, 22, 10, 23, 50, 10, 45, 30],
-                ['Keyword5', 13, 12, 15, 10, 16, 15, 40, 12, 40, 13, 3, 20]
-            ];
 
             window.chart = c3.generate({
                 bindto: '#chart',
                 data: {
-                    columns: columns,
+                    columns: [
+                        ['AllDocCounts'].concat(CountsArray)
+                    ],
                     type: 'bar',
                     types: {
                         Keyword1: 'spline',
@@ -93,7 +94,7 @@ angular.module('SenseMakingApp.controllers', [])
                         Keyword5: 'spline'
                     },
                     groups: [
-                        ['Keyword1','Keyword2']
+                        ['Keyword1', 'Keyword2']
                     ]
                 },
                 color: {
@@ -108,22 +109,20 @@ angular.module('SenseMakingApp.controllers', [])
                 zoom: {
                     enabled: true
                 },
-				//tooltip
-				tooltip: {
-					grouped: false,
-					format: {
-						title: function (d) { 
-							return "Frequency" +  "{{id}}";
-							 },
-						value: function (value, ratio, id) {
-							var format = id === 'data1' ? d3.format(',') : d3.format("");
-							return format(value);
-						}
-			// =           value: d3.format(',') // apply this format to both y and y2
-					}
-				}
-				
-				
+                //tooltip
+                tooltip: {
+                    grouped: false,
+                    format: {
+                        title: function (d) {
+                            return "Frequency" + "{{id}}";
+                        },
+                        value: function (value, ratio, id) {
+                            var format = id === 'data1' ? d3.format(',') : d3.format("");
+                            return format(value);
+                        }
+                        // =           value: d3.format(',') // apply this format to both y and y2
+                    }
+                }
             }); //c3 ends
         }); //API.getDocDates ends
-    }); //TrendLineCtrl ends
+    }); //controller ends

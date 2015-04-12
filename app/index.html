@@ -49,7 +49,7 @@
                 	<h2 id="title1">{{id}}</h2>
                     <h5 id="author1"></h5>
                     <p id="body1">{{body}}</p>
-                    
+
                     <script>
                     	function myFunction() {
 							var str = "AHS principal talks about course changes Story by: John Panni Date Published to Web: 4/1/2004"
@@ -60,7 +60,7 @@
 							document.getElementById("title1").innerHTML = title;
 							document.getElementById("author1").innerHTML += author;
 						}
-                    
+
                     </script>
                     <div id="demo"><button onClick="myFunction()">Substring</button></div>
                 </div>
@@ -69,7 +69,7 @@
     </div><!--container-->
 
     <h1 class="ui header">Trend Line of {{currentMonth}}</h1>
-    <div class="container" id="chart" ng-controller="ChartCtrl"></div>
+    <div class="container" id="chart"></div>
 
     <div id="demo"></div>
     <!-- build:js(.) scripts/vendor.js -->
