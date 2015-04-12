@@ -24,10 +24,24 @@ angular.module('SenseMakingApp.controllers', [])
 						for (var keyword in keywords){
 							API.getDocKeywordFrequency(documentId, keyword).then(
 								$scope.SetSentiment = function (frequency){
-									var sentiment = Math.random();
-									console.log(sentiment);
-									document.getElementById("sentiment").style.color = "blue";
-									
+										var polarity = "positive";
+										var sentiment = Math.random();
+										if (polarity = "positive"){
+				
+											var r = Math.ceil (5 * sentiment);
+											var g = Math.ceil (255 * sentiment);
+											var b = Math.ceil (5 * sentiment);
+											console.log(sentiment);
+											document.getElementById("sentiment").style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+										}//if positive
+										
+										else{
+											var r = Math.ceil (255 * sentiment);
+											var g = Math.ceil (5 * sentiment);
+											var b = Math.ceil (5 * sentiment);
+											console.log(sentiment);
+											document.getElementById("sentiment").style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+											}//else
 									}//function(frequency)
 							); //API.getDocKeywordFrequency
 							
