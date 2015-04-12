@@ -17,12 +17,23 @@ angular.module('SenseMakingApp.controllers', [])
 
             API.getDocumentsByMonth(month).then(function (documentIds) {
                 for (var documentId in documentIds) {
+				$scope.documentId = documentId;
                     API.callAylien(documentId).then(function (response) {
                         angular.extend($scope.keywords, response[0]['keyword']);
-                    });
-                }
-            });
-        };
+						var keywords = response[0]['keyword'];
+						for (var keyword in keywords){
+							API.getDocKeywordFrequency(documentId, keyword).then(
+								function (frequency){
+									console.log(Math.random());
+									
+									}//function(frequency)
+							); //API.getDocKeywordFrequency
+							
+						}//for(keyword in keywords)
+					});//API.callAylien(documentId)
+				}//for
+			});//API.getDocumentsByMonth
+		}//setCurrentMonth
 
         $scope.setCurrentKeyword = function (keyword) {
             $scope.currentKeyword = keyword;

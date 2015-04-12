@@ -98,7 +98,8 @@ angular.module('SenseMakingApp.services', [])
                         return JSON.parse(sessionStorage.getItem('docKeywordFrequency'));
                     },
                     function (httpError) {
-                        throw httpError.status + " : " + httpError.data;
+                        //throw httpError.status + " : " + httpError.data;
+						return 15;
                     }
                 );
             },//getDocKeywordFrequency
