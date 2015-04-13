@@ -9,6 +9,7 @@ angular.module('SenseMakingApp.services', [])
                     function (response) {
                         sessionStorage.setItem('Aylien', JSON.stringify(response));
                         return JSON.parse(sessionStorage.getItem('Aylien'));
+						
                     },
                     function (httpError) {
                         //throw httpError.status + " : " + httpError.data;
@@ -154,7 +155,7 @@ angular.module('SenseMakingApp.services', [])
             getDocumentsByMonth: function (month) {
                 return $http.get(api + "DocsByMonth.php?month=" + month).then(
                     function (response) {
-                        sessionStorage.setItem('documentsByMonth', JSON.stringify(response));
+                        sessionStorage.setItem('documentsByMonth', JSON.stringify(response.data));
                         return JSON.parse(sessionStorage.getItem('documentsByMonth'));
                     },
                     function (httpError) {
