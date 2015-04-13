@@ -2,7 +2,7 @@
 
 angular.module('SenseMakingApp.services', [])
     .factory('API', function ($http) {
-        var api = "http://www.johnhinkel.com/SenseMaking/api/";
+        var api = "http://johnhinkel.com/SenseMaking/api/";
         return {
             callAylien: function (docNumber) {
                 return $http.get(api + "AylienCalls.php?filename=" + docNumber).then(
