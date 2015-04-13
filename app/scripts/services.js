@@ -7,7 +7,7 @@ angular.module('SenseMakingApp.services', [])
             callAylien: function (docNumber) {
                 return $http.get(api + "AylienCalls.php?filename=" + docNumber).then(
                     function (response) {
-                        sessionStorage.setItem('Aylien', JSON.stringify(response));
+                        sessionStorage.setItem('Aylien', JSON.stringify(response.data));
                         return JSON.parse(sessionStorage.getItem('Aylien'));
 						
                     },
@@ -95,7 +95,7 @@ angular.module('SenseMakingApp.services', [])
             getDocKeywordFrequency: function (docNumber, keyword) {
                 return $http.get(api + "Frequency.php?filename=" + docNumber + "&keyword=" + keyword).then(
                     function (response) {
-                        sessionStorage.setItem('docKeywordFrequency', JSON.stringify(response));
+                        sessionStorage.setItem('docKeywordFrequency', JSON.stringify(response.data));
                         return JSON.parse(sessionStorage.getItem('docKeywordFrequency'));
                     },
                     function (httpError) {
@@ -108,7 +108,7 @@ angular.module('SenseMakingApp.services', [])
             getDocDates: function () {
                 return $http.get(api + "dateParser.php").then(
                     function (response) {
-                        sessionStorage.setItem('docDates', JSON.stringify(response));
+                        sessionStorage.setItem('docDates', JSON.stringify(response.data));
                         return JSON.parse(sessionStorage.getItem('docDates'));;
                     },
                     function (httpError) {
@@ -120,7 +120,7 @@ angular.module('SenseMakingApp.services', [])
             getDocNumbers: function () {
                 return $http.get(api + "DocNumbers.php").then(
                     function (response) {
-                        sessionStorage.setItem('docNumbers', JSON.stringify(response));
+                        sessionStorage.setItem('docNumbers', JSON.stringify(response.data));
                         return JSON.parse(sessionStorage.getItem('docNumbers'));
                     },
                     function (httpError) {
@@ -132,7 +132,7 @@ angular.module('SenseMakingApp.services', [])
             getDocument: function (docNumber) {
                 return $http.get(api + "DocFetcher.php?filename=" + docNumber).then(
                     function (response) {
-                        sessionStorage.setItem('document', JSON.stringify(response));
+                        sessionStorage.setItem('document', JSON.stringify(response.data));
                         return JSON.parse(sessionStorage.getItem('document'));
                     },
                     function (httpError) {
@@ -144,7 +144,7 @@ angular.module('SenseMakingApp.services', [])
             getDocumentsByKeyword: function (keyword) {
                 return $http.get(api + "KeywordMatcher.php?keyword=" + keyword).then(
                     function (response) {
-                        sessionStorage.setItem('documentsByKeyword', JSON.stringify(response));
+                        sessionStorage.setItem('documentsByKeyword', JSON.stringify(response.data));
                         return JSON.parse(sessionStorage.getItem('documentsByKeyword'));
                     },
                     function (httpError) {
@@ -178,7 +178,7 @@ angular.module('SenseMakingApp.services', [])
             getFrequencyByMonth: function (keyword) {
                 return $http.get(api + "FrequencyByMonth.php?keyword=" + keyword).then(
                     function (response) {
-                        sessionStorage.setItem('frequencyByMonth', JSON.stringify(response));
+                        sessionStorage.setItem('frequencyByMonth', JSON.stringify(response.data));
                         return JSON.parse(sessionStorage.getItem('frequencyByMonth'));
                     },
                     function (httpError) {
