@@ -76,6 +76,9 @@ for($i=2;$i<sizeof($files);$i++){
 	$filenumbers = rtrim($files[$i],".txt");
 	if($parsedMonth==$MonthNumber){
 		array_push($results, $filenumbers);
+		
+	}	
+}
 		array_push($results, "1201243446501");                  
 		array_push($results, "1201243446502");                  
 		array_push($results, "1201243446503");
@@ -87,7 +90,5 @@ for($i=2;$i<sizeof($files);$i++){
 		array_push($results, "1201243446613");                  
 
 
-	}	
-}
 echo json_encode($results);
 ?>
