@@ -45,36 +45,6 @@ angular.module('SenseMakingApp.controllers', [])
                     API.callAylien(documentId).then(function(response) {
                         var keywords = response[0]['keyword'];
                         angular.extend($scope.keywords, keywords);
-                        angular.forEach(keywords, function(keyword) {
-                            API.getDocKeywordFrequency(documentId, keyword).then(function(frequency) {
-                                //$scope.SetDocContents = function(frequency) {
-                                //    var polarity = "positive";
-                                //    var sentiment = Math.random();
-                                //    var r = Math.ceil (255 * sentiment);
-                                //    var g = Math.ceil (255 * sentiment);
-                                //    var b = Math.ceil (255 * sentiment);
-                                //    window.str = "AHS principal talks about course changes Story by: John Panni Date Published to Web: 4/1/2004"
-                                //    window.GetTitleIndex = str.indexOf("Story");
-                                //    window.GetAuthorIndex = str.indexOf("Date");
-                                //    window.GetPublishDate = str.indexOf("Web:");
-                                //    window.GetPublishDateStop = str.indexOf("2004");
-                                //    window.title = str.substring(0, GetTitleIndex);
-                                //    window.author = str.substring(GetAuthorIndex,GetTitleIndex);
-                                //    window.publishDate = str.substring(GetPublishDate + 4, GetPublishDateStop + 4);
-                                //    document.getElementById("title1").innerHTML = title;
-                                //    document.getElementById("AuthorAndPublishDate1").innerHTML = author + "|" + publishDate;
-                                //    if (polarity = "positive"){
-                                //        g += 150;
-                                //        console.log(sentiment);
-                                //        document.getElementById("sentiment").style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
-                                //    } else {
-                                //        r += 150;
-                                //        console.log(polarity);
-                                //        document.getElementById("sentiment").style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
-                                //    }//else
-                                //}
-                            });//API.getDocKeywordFrequency
-                        });//for(keyword in keywords)
                     });//API.callAylien(documentId), then
                 });//for
             });//API.getDocumentsByMonth
@@ -89,9 +59,21 @@ angular.module('SenseMakingApp.controllers', [])
                 console.log('fetched ' + documents.length + ' documents with keyword \'' + keyword + '\'');
                 angular.forEach(documents, function(documentId) {
                     API.getDocument(documentId).then(function(body) {
+                        var polarity = "positive";
+                        var sentiment = Math.random();
+                        var r = Math.ceil (255 * sentiment);
+                        var g = Math.ceil (255 * sentiment);
+                        var b = Math.ceil (255 * sentiment);
+                        if (polarity = "positive"){
+                            g += 150;
+                        } else {
+                            r += 150;
+                        }
                         $scope.documents.push({
+                            'byline': body.substring(0, 0),
+                            'body': body,
                             'id': documentId,
-                            'body': body
+                            'sentimentCSS':  'background-color: rgb(' + r + ',' + g + ',' + b + ')'
                         });
                     });
                 });
