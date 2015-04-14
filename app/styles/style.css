@@ -169,6 +169,23 @@ p {
 
 }
 
+.demo {
+	display:table;
+	width:100%;
+	table-layout: fixed;
+	overflow:scroll;
+		}
+
+.demo span {
+	display:table-cell;
+	text-align:center;
+	padding:2% 2% 2% 2%;
+	margin:0 .5% 0 .5%;
+	border: .5px solid white;
+	border-radius:10px;
+		}
+    
+
 #monthList {
     width: 20% !important;
 }
