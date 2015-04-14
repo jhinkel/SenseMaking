@@ -77,11 +77,14 @@
 
 
 <!--Trendline-->
-
     <h1 class="ui header ui orange label" id="trendline">Trend Line of {{currentMonth}}</h1>
-    <div class="container" id="chart"></div>
-
-    <div id="demo"></div>
+    <div class="container">
+        <div class="ui vertically divided grid">
+            <div class="column row">
+                <div id="chart"></div>
+            </div>
+        </div>
+    </div>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/angular/angular.js"></script>
