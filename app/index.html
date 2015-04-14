@@ -35,21 +35,19 @@
         <div id="monthList">
             <button ng-repeat="month in months" ng-click="setCurrentMonth(month)">{{month}}</button>
         </div>
-        <div id="tagCloud">
+        <div id="tagCloud" ng-show="currentMonth">
             <span ng-repeat="keyword in keywords" ng-click="setCurrentKeyword(keyword)">{{keyword}}</span>
         </div>
     </div>
 
-    <h1 class="ui header teal label" id="FirstTitle">All Documents from {{currentMonth}}</h1>
+    <h1 class="ui header teal label" id="FirstTitle" ng-show="currentKeyword">Documents from {{currentMonth}} containing "{{currentKeyword}}"</h1>
     <div class="container">
-        <!--div id="major-news">This Month's Major News</div-->
         <div class="ui vertically divided grid">
-        	<div class="column row"> <!--class change depending on # of documents that month-->
+        	<div class="column row">
             	<div class="column major-news" ng-repeat="document in documents">
-                	<h3 class="DocTitle" id="title1">{{document.id}}</h3>
+                	<h3 class="DocTitle">{{document.id}}</h3>
                     <h5 class="DocAuthorAndDate dividing header">{{document.byline}}</h5>
-                    <p class="DocBody" id="body1">{{document.body}}</p>
-                    <br></br>
+                    <p class="DocBody">{{document.body}}</p>
                     <div id="sentiment" style="{{document.sentimentCSS}}" class="ui top attached label customize-color"></div>
                 </div>
            </div><!--N column row, N depends on how many news articles there are in that month-->
@@ -58,7 +56,7 @@
 
 
 <!--Obituaries-->
-    <h1 class="ui header black label" id="obituaries">Obituaries from {{currentMonth}}</h1>
+    <h1 class="ui header black label" id="obituaries" ng-show="currentMonth">Obituaries from {{currentMonth}}</h1>
     <div class="container">
         <div class="ui vertically divided grid">
         	<div class="column row">
@@ -77,7 +75,7 @@
 
 
 <!--Trendline-->
-    <h1 class="ui header ui orange label" id="trendline">Trend Line of {{currentMonth}}</h1>
+    <h1 class="ui header ui orange label" id="trendline">Trend Line</h1>
     <div class="container">
         <div class="ui vertically divided grid">
             <div class="column row">
