@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <h1 class="ui header" id="FirstTitle">All Documents from {{currentMonth}}</h1>
+    <h1 class="ui header teal label" id="FirstTitle">All Documents from {{currentMonth}}</h1>
     <div class="container">
         <!--div id="major-news">This Month's Major News</div-->
         <div class="ui vertically divided grid">
@@ -55,6 +55,28 @@
            </div><!--N column row, N depends on how many news articles there are in that month-->
         </div><!--ui vertically divided grid-->
     </div><!--container-->
+
+
+<!--Obituaries-->
+    <h1 class="ui header black label" id="obituaries">Obituaries from {{currentMonth}}</h1>
+    <div class="container">
+        <div class="ui vertically divided grid">
+        	<div class="column row">
+            	<div class="column" ng-repeat="obi in obituraries">
+                	<p>{{obi}}</p>
+                    <h4 id="Obiturarytitle1">{{obi}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!--Lucky Numbers-->
+
+
+
+
+<!--Trendline-->
 
     <h1 class="ui header" id="trendline">Trend Line of {{currentMonth}}</h1>
     <div class="container" id="chart"></div>
