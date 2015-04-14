@@ -6,6 +6,9 @@
 ini_set('display_errors', true);
 
 error_reporting(E_ALL);
+
+//header("HTTP/1.0 403 Forbidden");
+
 require_once("src/AYLIEN/TextAPI.php");
 $path = "stego_dataset";
 $files = scandir($path);
@@ -16,7 +19,7 @@ for($i=0;$i<sizeof($files);$i++){
 	}
 }
 
-$textapi = new AYLIEN\TextAPI("b47f9237", "aea8e51bf28c8eb50f01c151590d9d69");
+$textapi = new AYLIEN\TextAPI("6e729a1f", "c7d5f4f699da779a974474f75cd1b6bc");
 $sentiment = $textapi->Sentiment(array("text" => $text));
 $entities = $textapi->Entities(array("text" => $text));
 $results=array();
@@ -25,5 +28,6 @@ $results["polarityConfidence"] = $sentiment->polarity_confidence;
 $results["subjectivityConfidence"] = $sentiment->subjectivity_confidence;
 array_push($results, $entities->entities);
 echo json_encode($results);
+
 ?>
 

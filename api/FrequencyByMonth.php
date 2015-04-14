@@ -45,6 +45,8 @@ for($MonthNumber=1;$MonthNumber<=12;$MonthNumber++){
 		}	
 	}
 	array_push($results, $frequencyCountMonth);
+        $frequencyCountMonth = 0;
+	$freqCount = 0;
 }
 echo json_encode($results);
 ?>
