@@ -32,7 +32,6 @@ angular.module('SenseMakingApp.controllers', [])
 			API. getDocumentsByKeyword ("Obituaries").then(function (ObituraryIDs){
 				console.log(ObituraryIDs);
 				window.AllObituaries = ObituraryIDs;
-				console.log(AllObituaries);	
 			})
 
 
