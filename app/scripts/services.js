@@ -137,7 +137,7 @@ angular.module('SenseMakingApp.services', [])
                     },
                     function (httpError) {
                         //throw httpError.status + " : " + httpError.data;
-                        return {123059861349057: "This is a document body"};
+                        return "This is a document body";
                     }
                 );
             },//getDocument

@@ -45,10 +45,10 @@
         <!--div id="major-news">This Month's Major News</div-->
         <div class="ui vertically divided grid">
         	<div class="column row"> <!--class change depending on # of documents that month-->
-            	<div class="column major-news" ng-repeat="(id, body) in documents">
-                	<h3 class="DocTitle" id="title1">{{id}}</h3>
+            	<div class="column major-news" ng-repeat="document in documents">
+                	<h3 class="DocTitle" id="title1">{{document.id}}</h3>
                     <h5 class="DocAuthorAndDate dividing header" id="AuthorAndPublishDate1">{{author}}</h5>
-                    <p class="DocBody" id="body1">{{body}}</p>
+                    <p class="DocBody" id="body1">{{document.body}}</p>
                     <br></br>
                     <div id="sentiment" class="ui top attached label customize-color" ng-init="SetDocContents(frequency)"></div>
                 </div>
