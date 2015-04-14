@@ -9,7 +9,7 @@ angular.module('SenseMakingApp.services', [])
                     function (response) {
                         sessionStorage.setItem('Aylien', JSON.stringify(response.data));
                         return JSON.parse(sessionStorage.getItem('Aylien'));
-						
+
                     },
                     function (httpError) {
                         //throw httpError.status + " : " + httpError.data;
@@ -148,7 +148,31 @@ angular.module('SenseMakingApp.services', [])
                         return JSON.parse(sessionStorage.getItem('documentsByKeyword'));
                     },
                     function (httpError) {
-                        throw httpError.status + " : " + httpError.data;
+                        //throw httpError.status + " : " + httpError.data;
+                        return [
+                            "1101162452451",
+                            "1101162523405",
+                            "1101163044539",
+                            "1101163072805",
+                            "1101163162978",
+                            "1101163179932",
+                            "1101163324807",
+                            "1101163340400",
+                            "1101163390822",
+                            "1101163444463",
+                            "1101163477635",
+                            "1101163706824",
+                            "1101242496946",
+                            "1101242586149",
+                            "1101242766682",
+                            "1101242787244",
+                            "1101242963292",
+                            "1101243052340",
+                            "1101243074777",
+                            "1101243160012",
+                            "1101243182966",
+                            "1101243446514"
+                        ];
                     }
                 );
             }, //getDocumentsByKeywords
@@ -200,7 +224,7 @@ angular.module('SenseMakingApp.services', [])
                     }
                 )
             },//getFreqencyByMonth
-		
+
 			getObituariesFrequency: function (){
 				return $http.get(api + "FrequencyByMonth.php?keyword=" + "Obituaries").then(
 					function(){
@@ -212,6 +236,6 @@ angular.module('SenseMakingApp.services', [])
 					}//httpError
 				)//then
 			}//getObituariesFrequency
-			
+
         };
     });
