@@ -34,7 +34,6 @@ angular.module('SenseMakingApp.controllers', [])
                     intersect = intersect(ObituraryIDs, documentIds);
                     angular.forEach(intersect, function(obiturary) {
                         API.getDocument(obiturary).then(function(obiturary){
-                            console.log(obiturary);
                             $scope.obituraries.push(obiturary);
                         });
                     });
@@ -83,12 +82,24 @@ angular.module('SenseMakingApp.controllers', [])
 
         $scope.setCurrentKeyword = function (keyword) {
             $scope.currentKeyword = keyword;
+            $scope.documents = [];
 
-            API.getDocument(keyword).then(function (documents) {
-                $scope.documents = documents;
+            console.log('fetching documents with keyword \'' + keyword + '\'');
+            API.getDocumentsByKeyword(keyword).then(function (documents) {
+                console.log('fetched ' + documents.length + ' documents with keyword \'' + keyword + '\'');
+                angular.forEach(documents, function(documentId) {
+                    API.getDocument(documentId).then(function(body) {
+                        $scope.documents.push({
+                            'id': documentId,
+                            'body': body
+                        });
+                    });
+                });
             });
 
+            console.log('fetching frequency of keyword \'' + keyword + '\'');
             API.getFrequencyByMonth(keyword).then(function (frequencies) {
+                console.log('\'' + keyword + '\' frequency: ' + frequencies);
                 chart.load({
                     columns: [
                         [keyword].concat(frequencies)
