@@ -59,7 +59,7 @@ angular.module('SenseMakingApp.controllers', [])
                 console.log('fetched ' + documents.length + ' documents with keyword \'' + keyword + '\'');
                 angular.forEach(documents, function(documentId) {
                     API.getDocument(documentId).then(function(body) {
-                        var polarity = "positive";
+                        var polarity = "positive"; // TO DO: extrac document polarity from http://johnhinkel.com/SenseMaking/api/AylienCalls.php?filename=1101162433811 
                         var sentiment = Math.random();
                         var r = Math.ceil (255 * sentiment);
                         var g = Math.ceil (255 * sentiment);
