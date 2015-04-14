@@ -12,7 +12,13 @@ angular.module('SenseMakingApp.controllers', [])
         $scope.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 
-        function intersect(a, b) {
+        $scope.setCurrentMonth = function (month) {
+        $scope.currentMonth = month;
+        $scope.keywords = {};
+
+        API.getDocumentsByMonth(month).then(function (documentIds) {
+				
+		function intersect(a, b) {
             $scope.obituraries = [];
 
             var t;
@@ -23,13 +29,15 @@ angular.module('SenseMakingApp.controllers', [])
             });
         }
 
-        var AllObituaries = ["1101162452451","1101162523405","1101163044539","1101163072805","1101163162978","1101163179932","1101163324807","1101163340400","1101163390822","1101163444463","1101163477635","1101163706824","1101242496946","1101242586149","1101242766682","1101242787244","1101242963292","1101243052340","1101243074777","1101243160012","1101243182966","1101243446514"];
+			API. getDocumentsByKeyword ("Obituaries").then(function (ObituraryIDs){
+				console.log(ObituraryIDs);
+				window.AllObituaries = ObituraryIDs;
+				console.log(AllObituaries);	
+			})
 
-        var CurrentMonthDocs = ["1101162881272","1101162881756","1101162902397","1101162902913","1101162903381","1101162904116","1101162945882","1101162948101","1101162948851","1101162949366","1101162964241","1101162965023","1101162965507","1101162966023","1101162966523","1101162981695","1101162982195","1101162982898","1101163001554","1101163002039","1101163002539","1101163004554","1101163941146","1101163941148","1101241536631","1101242721291","1101242722744","1101242743650","1101242745182","1101242765510","1101242766213","1101242766682","1101242786744","1101242787244","1201243446614","1201243446501","1201243446502","1201243446503","1201243446504","1201243446505","1201243446506","1201243446507","1201243446508","1201243446613"];
 
-
-        intersect(AllObituaries, CurrentMonthDocs);
-        intersect = intersect(AllObituaries, CurrentMonthDocs);
+        intersect(AllObituaries, documentIds);
+        intersect = intersect(AllObituaries, documentIds);
         console.log(	intersect);
 
         angular.forEach(intersect, function(obiturary) {
@@ -37,25 +45,11 @@ angular.module('SenseMakingApp.controllers', [])
                 function(obiturary){
                     console.log(obiturary);
                     $scope.obituraries.push (obiturary);
-                    console.log(obituraries);
                 }
             )
 
 
-
-
-
-
         });//FindIntersection Ends
-
-
-
-        $scope.setCurrentMonth = function (month) {
-            $scope.currentMonth = month;
-            $scope.keywords = {};
-
-            API.getDocumentsByMonth(month).then(function (documentIds) {
-
 
                 //How the function below flows: find documentId --> find a specific keyword --> find sentiment & title/author
                 angular.forEach(documentIds, function(documentId) {
