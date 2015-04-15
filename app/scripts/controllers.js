@@ -14,7 +14,7 @@ angular.module('SenseMakingApp.controllers', [])
 
         $scope.setCurrentMonth = function (month) {
             $scope.currentMonth = month;
-            $scope.keywords = {};
+            $scope.keywords = [];
 
             console.log('fetching documents in ' + month);
             API.getDocumentsByMonth(month).then(function (documentIds) {
@@ -27,6 +27,16 @@ angular.module('SenseMakingApp.controllers', [])
                         if (b.indexOf(e) !== -1) return true;
                     });
                 }
+                function arrayUnique(array) {
+                    var a = array.concat();
+                    for(var i=0; i<a.length; ++i) {
+                        for(var j=i+1; j<a.length; ++j) {
+                            if(a[i] === a[j])
+                                a.splice(j--, 1);
+                        }
+                    }
+                    return a;
+                };
                 console.log('fetching documents containing \'Obituaries\'');
                 API.getDocumentsByKeyword("Obituaries").then(function (ObituraryIDs){
                     console.log('fetched ' + ObituraryIDs.length + ' containing \'Obituaries\'');
@@ -44,11 +54,9 @@ angular.module('SenseMakingApp.controllers', [])
                 angular.forEach(documentIds, function(documentId) {
                     API.callAylien(documentId).then(function(response) {
                         var keywords = response[0]['keyword'];
-						alert ('got keywords');
-						var AylienCallResponse = {};
-						 AylienCallResponse = response;
-						console.log('response'); 
-                        angular.extend($scope.keywords, keywords);
+						var AylienCallResponse = response;
+                        $scope.keywords = arrayUnique($scope.keywords.concat(keywords));
+                        console.log($scope.keywords);
                     });//API.callAylien(documentId), then
                 });//for
             });//API.getDocumentsByMonth
@@ -63,7 +71,7 @@ angular.module('SenseMakingApp.controllers', [])
                 console.log('fetched ' + documents.length + ' documents with keyword \'' + keyword + '\'');
                 angular.forEach(documents, function(documentId) {
                     API.getDocument(documentId).then(function(body) {
-                        var polarity = "positive"; // TO DO: extrac document polarity from http://johnhinkel.com/SenseMaking/api/AylienCalls.php?filename=1101162433811 
+                        var polarity = "positive"; // TO DO: extrac document polarity from http://johnhinkel.com/SenseMaking/api/AylienCalls.php?filename=1101162433811
                         var sentiment = Math.random();
                         var r = Math.ceil (255 * sentiment);
                         var g = Math.ceil (255 * sentiment);
