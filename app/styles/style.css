@@ -174,13 +174,13 @@ p {
 	width:100%;
 	table-layout: fixed;
 	overflow:scroll;
+	margin:.5em 2em .5em 2em;
 		}
 
 .demo span {
 	display:table-cell;
 	text-align:center;
-	padding:2% 2% 2% 2%;
-	margin:0 .5% 0 .5%;
+	margin:.5em .5em .5em .5em !important;
 	border: .5px solid white;
 	border-radius:10px;
 		}
