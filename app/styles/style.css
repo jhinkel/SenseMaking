@@ -24,10 +24,10 @@ body {
 
 .clearfix:before,
 .clearfix:after {
-    content: ".";    
-    display: block;    
-    height: 0;    
-    overflow: hidden; 
+    content: ".";
+    display: block;
+    height: 0;
+    overflow: hidden;
 }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; } /* IE < 8 */
@@ -126,7 +126,7 @@ p {
 #tagCloud span {
     display: inline-block;
     line-height: 20px;
-    padding: 2px;
+    padding: 6px 16px;
     color: #535353;
     font-size: 16px;
     word-wrap: break-word;
@@ -186,7 +186,7 @@ p {
 	border: .5px solid white;
 	border-radius:5px;
 		}
-    
+
 .column-customize{
 	margin-right:-2em;
 	margin-bottom:1em !important;}
