@@ -19,7 +19,7 @@ for($i=0;$i<sizeof($files);$i++){
 	}
 }
 
-$textapi = new AYLIEN\TextAPI("6e729a1f", "c7d5f4f699da779a974474f75cd1b6bc");
+$textapi = new AYLIEN\TextAPI("b47f9237", "aea8e51bf28c8eb50f01c151590d9d69");
 $sentiment = $textapi->Sentiment(array("text" => $text));
 $entities = $textapi->Entities(array("text" => $text));
 $results=array();
