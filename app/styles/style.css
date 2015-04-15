@@ -176,7 +176,6 @@ p {
 	display:table;
 	width:100%;
 	table-layout: fixed;
-	overflow:scroll;
 	margin:.5em 2em .5em 2em;
 		}
 
