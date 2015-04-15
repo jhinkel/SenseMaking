@@ -137,7 +137,7 @@ angular.module('SenseMakingApp.services', [])
                     },
                     function (httpError) {
                         //throw httpError.status + " : " + httpError.data;
-                        return "This is a document body";
+                        return "A giant ladle, along with $200 in cash, were presented to Lupe Castro of Granger after her large crockpot";
                     }
                 );
             },//getDocument

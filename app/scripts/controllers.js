@@ -80,10 +80,17 @@ angular.module('SenseMakingApp.controllers', [])
                         } else {
                             r += 150;
                         }
+						var title
+						var date
+						var author
+						var DocBody
+						var sentimentCSS
                         $scope.documents.push({
-                            'byline': body.substring(0, 0),
-                            'body': body,
-                            'id': documentId,
+                            'title': body.substring(0, body.indexOf("Date")), //body is the full document body
+							//'author':body.substring(
+							'date': body.substring(body.indexOf("Web:"), body.indexOf("2004")),
+                            'body': body.substring(body.indexOf("2004"), 80),
+                            //'id': documentId,
                             'sentimentCSS':  'background-color: rgb(' + r + ',' + g + ',' + b + ')'
                         });
                     });
