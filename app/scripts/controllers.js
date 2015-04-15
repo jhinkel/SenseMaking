@@ -109,10 +109,6 @@ angular.module('SenseMakingApp.controllers', [])
             });
         };
 
-        $scope.filterKeywords = function() {
-            $scope.keywords;
-        };
-
         console.log('fetching document metadata');
         API.getDocDates().then(function (data) {
             console.log('fetched document metadata');
