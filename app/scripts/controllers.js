@@ -172,16 +172,20 @@ angular.module('SenseMakingApp.controllers', [])
                 },
                 axis: {
                     x: {
+				
                         type: 'category',
                         categories: $scope.months
                     },
                     y: {
-                        label: {
+			          label: {
                             text: 'Number of documents',
-                            position: 'outer-middle'
+                            position: 'outer-top',
+							
                         }
+						
                     },
                     y2: {
+					
                         show: true,
                         label: {
                             text: 'Frequency of keyword',

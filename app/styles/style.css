@@ -144,6 +144,16 @@ p {
 }
 
 
+.obiturary-news {
+    border: 1px solid #ADABAB;
+	background-color: #ffffff;
+	margin:1em 1em 1em 1em;
+    -webkit-box-shadow: 0px 0px 16px -1px rgba(0, 0, 0, 0.53);
+    -moz-box-shadow: 0px 0px 16px -1px rgba(0, 0, 0, 0.53);
+    box-shadow: 0px 0px 16px -1px rgba(0, 0, 0, 0.53);
+}
+
+
 .major-news h2 {
     text-align: center;
 }
@@ -195,13 +205,16 @@ p {
 	margin-top:1em;
 	height:20px;
 	}
-.customize-color-obiturary
+	
+.obiturary-band
 	{
+	color:black;
+	display:block;
 	width:100%;
 	padding:0 2em 0 2em;
 	margin-top:1em;
 	height:20px;
-	color:#2A2929;
+	
 	}
 
 
@@ -219,6 +232,9 @@ p {
 .c3-chart > * {
     cursor: help !important;
 }
+.c3 svg{
+	margin-top:3em;
+	}
 
 .DocTitle {
     padding-top: 1em;
@@ -230,4 +246,24 @@ p {
     display: block;
     margin-top: -3px;
     padding-bottom: 2px;
+}
+
+
+.c3 svg g g.c3-axis.c3-axis-x {
+font: 18px helvetica sans-serif;
+padding:3em 3em;
+}
+
+.c3-axis c3-axis-y .c3-axis-y2-label{
+	font-size:20px;
+	}
+
+.c3 svg g g.c3-axis.c3-axis-y {
+font: 16px helvetica sans-serif;
+padding:3em 3em;
+}
+
+.c3 svg g g.c3-axis.c3-axis-y2 {
+font: 16px helvetica sans-serif;
+padding:3em 3em;
 }
