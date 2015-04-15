@@ -14,12 +14,12 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/style.css" type="text/css">
-  
-     
+
+
     <!-- endbuild -->
 </head>
-<div class="ui inverted segment"></div>
 <body ng-app="SenseMakingApp" ng-controller="MainCtrl">
+    <div class="ui inverted segment"></div>
     <div class="container">
         <div id="current-month">
             <p>2004</p>
@@ -49,50 +49,47 @@
 
     <h1 class="ui header teal label" id="FirstTitle" ng-show="currentKeyword">Documents from {{currentMonth}} containing "{{currentKeyword}}"</h1>
     <div class="container">
-
         <div class="ui pagd grid demo">
-        	<div class="four column row" >
-            	<div class="column column-customize clearfix" ng-repeat="document in documents">
+            <div class="four column row" >
+                <div class="column column-customize clearfix" ng-repeat="document in documents">
                     <span class="major-news" >
                        <div id="sentiment" style="{{document.sentimentCSS}}" class="customize-color"></div>
                        <div style="margin:2em 2em 2em 2em;">
-                       	 <h3 class="DocTitle">{{document.title}}</h3>
-                         <h5 class="DocAuthorAndDate dividing header">{{document.date}}</h5>
-                         <p class="DocBody">{{document.body}}</p>
-                         <div class="ui inverted blue button">Read More</div>
+                           <h3 class="DocTitle">{{document.title}}</h3>
+                           <h5 class="DocAuthorAndDate dividing header">{{document.date}}</h5>
+                           <p class="DocBody">{{document.body}}</p>
+                           <div class="ui inverted blue button">Read More</div>
                        </div>
-
                     </span>
                 </div><!--column-customize-->
-             </div><!--four column row-->
-
+            </div><!--four column row-->
         </div><!--ui page grid-->
     </div><!--container-->
 
 
-<!--Obituaries-->
+    <!--Obituaries-->
     <h1 class="ui header black label" id="obituaries" ng-show="currentMonth">Obituaries from {{currentMonth}}</h1>
     <div class="container">
         <div class="ui page grid demo">
-        	<div class="two column row">
-        	<div class="column column-customize clearfix">
-            	<span class="obiturary-news">
-                	<div id="obiturary" style="{{document.sentimentCSS}}" class="customize-color-obiturary"></div>
-                    <div class="column" ng-repeat="obi in obituraries">
-                        <h3 id="Obiturarytitle1">{{obiturary_title}}</h3>
-                        <p class="DocBody">{{obi}}</p>
-                    </div><!--column-->
-                </span><!--span-->
-            </div><!--column customize-->
-        </div><!--ui page grid demo-->
+            <div class="two column row">
+                <div class="column column-customize clearfix">
+                    <span class="obiturary-news">
+                        <div id="obiturary" style="{{document.sentimentCSS}}" class="customize-color-obiturary"></div>
+                        <div class="column" ng-repeat="obi in obituraries">
+                            <h3 id="Obiturarytitle1">{{obiturary_title}}</h3>
+                            <p class="DocBody">{{obi}}</p>
+                        </div><!--column-->
+                    </span><!--span-->
+                </div><!--column customize-->
+            </div><!--ui page grid demo-->
+        </div>
     </div>
 
 
-<!--Lucky Numbers-->
+    <!--Lucky Numbers-->
 
 
-
-<!--Trendline-->
+    <!--Trendline-->
     <h1 class="ui header ui orange label" id="trendline">Trend Line</h1>
     <div class="container">
         <div class="ui vertically divided grid">
@@ -101,9 +98,8 @@
             </div>
         </div>
     </div>
-    
-  
-    
+
+
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/angular/angular.js"></script>

@@ -49,7 +49,7 @@ angular.module('SenseMakingApp.controllers', [])
                             $scope.obituraries.push({
                                 'title': 'Obiturary', //body is the full document body
                                 //'author':body.substring(
-                                'body': body.substring(0, 80)
+                                'body': obiturary.substring(0, 80)
                             });
                         });
                     });
