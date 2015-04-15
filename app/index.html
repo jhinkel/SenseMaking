@@ -45,14 +45,20 @@
    
         <div class="ui pagd grid demo">
         	<div class="four column row">
-            	<span class="column major-news" ng-repeat="document in documents">
-                	<div id="sentiment" style="{{document.sentimentCSS}}" class="ui top attached label customize-color"></div>
-                    <h3 class="DocTitle">{{document.id}}</h3>
-                    <h5 class="DocAuthorAndDate dividing header">{{document.byline}}</h5>
-                    <p class="DocBody">{{document.body}}</p>
-                      <div class="ui inverted blue button">Read More</div>
-                </span>
-                
+            	<div class="column column-customize clearfix" ng-repeat="document in documents">
+                    
+                    
+                    <span class="major-news" >
+                       <div id="sentiment" style="{{document.sentimentCSS}}" class="customize-color"></div>
+                       <div style="margin:2em 2em 2em 2em;">
+                       	 <h3 class="DocTitle">{{document.id}}</h3>
+                         <h5 class="DocAuthorAndDate dividing header">{{document.byline}}</h5>
+                         <p class="DocBody">{{document.body}}</p>
+                         <div class="ui inverted blue button">Read More</div>
+                       </div>
+                       
+                    </span>
+                </div><!--column-->
              </div><!--four column row-->
              
         </div><!--ui page grid-->
