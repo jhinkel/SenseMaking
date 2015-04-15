@@ -74,10 +74,10 @@
             <div class="two column row">
                 <div class="column column-customize clearfix">
                     <span class="obiturary-news">
-                        <div id="obiturary" style="{{document.sentimentCSS}}" class="customize-color-obiturary"></div>
-                        <div class="column" ng-repeat="obi in obituraries">
-                            <h3 id="Obiturarytitle1">{{obiturary_title}}</h3>
-                            <p class="DocBody">{{obi}}</p>
+                        <div id="obiturary" class="customize-color-obiturary"></div>
+                        <div class="column" ng-repeat="obiturary in obituraries">
+                            <h3 class="Obiturarytitle1">{{obiturary.title}}</h3>
+                            <p class="DocBody">{{obiturary.body}}</p>
                         </div><!--column-->
                     </span><!--span-->
                 </div><!--column customize-->
