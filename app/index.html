@@ -72,10 +72,10 @@
     <div class="container">
         <div class="ui page grid demo">
             <div class="two column row">
-                <div class="column column-customize clearfix">
+                <div class="column column-customize clearfix" ng-repeat="obiturary in obituraries">
                     <span class="obiturary-news">
                         <div id="obiturary" class="obiturary-band"></div>
-                        <div class="column" ng-repeat="obiturary in obituraries">
+                        <div class="column" >
                             <h3 class="Obiturarytitle1">{{obiturary.title}}</h3>
                             <p class="DocBody">{{obiturary.body}}</p>
                         </div><!--column-->
