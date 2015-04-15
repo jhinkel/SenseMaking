@@ -36,18 +36,22 @@
             <button ng-repeat="month in months" ng-click="setCurrentMonth(month)">{{month}}</button>
         </div>
         <div id="tagCloud" ng-show="currentMonth">
-            <span ng-repeat="keyword in keywords" ng-click="setCurrentKeyword(keyword)">{{keyword}}</span>
+            <div class="ui fluid action input">
+                <input type="text" placeholder="Filter keywords..." ng-model="searchText">
+                <div class="ui button">Filter</div>
+            </div>
+            <span ng-repeat="keyword in keywords | filter:searchText" ng-click="setCurrentKeyword(keyword)">{{keyword}}</span>
         </div>
     </div>
 
     <h1 class="ui header teal label" id="FirstTitle" ng-show="currentKeyword">Documents from {{currentMonth}} containing "{{currentKeyword}}"</h1>
     <div class="container">
-   
+
         <div class="ui pagd grid demo">
         	<div class="four column row">
             	<div class="column column-customize clearfix" ng-repeat="document in documents">
-                    
-                    
+
+
                     <span class="major-news" >
                        <div id="sentiment" style="{{document.sentimentCSS}}" class="customize-color"></div>
                        <div style="margin:2em 2em 2em 2em;">
@@ -56,11 +60,11 @@
                          <p class="DocBody">{{document.body}}</p>
                          <div class="ui inverted blue button">Read More</div>
                        </div>
-                       
+
                     </span>
                 </div><!--column-->
              </div><!--four column row-->
-             
+
         </div><!--ui page grid-->
     </div><!--container-->
 
