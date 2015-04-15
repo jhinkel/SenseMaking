@@ -50,8 +50,6 @@
         <div class="ui pagd grid demo">
         	<div class="four column row">
             	<div class="column column-customize clearfix" ng-repeat="document in documents">
-
-
                     <span class="major-news" >
                        <div id="sentiment" style="{{document.sentimentCSS}}" class="customize-color"></div>
                        <div style="margin:2em 2em 2em 2em;">
@@ -62,7 +60,7 @@
                        </div>
 
                     </span>
-                </div><!--column-->
+                </div><!--column-customize-->
              </div><!--four column row-->
 
         </div><!--ui page grid-->
@@ -72,22 +70,23 @@
 <!--Obituaries-->
     <h1 class="ui header black label" id="obituaries" ng-show="currentMonth">Obituaries from {{currentMonth}}</h1>
     <div class="container">
-        <div class="ui vertically divided grid">
-        	<div class="column row">
-            	<div class="column" ng-repeat="obi in obituraries">
-                	<p>{{obi}}</p>
-                    <h4 id="Obiturarytitle1"></h4>
-                </div>
-            </div>
-        </div>
+        <div class="ui page grid demo">
+        	<div class="two column row">
+        	<div class="column column-customize clearfix">
+            	<span class="obiturary-news">
+                	<div id="obiturary" style="{{document.sentimentCSS}}" class="customize-color-obiturary"></div>
+                    <div class="column" ng-repeat="obi in obituraries">
+                        <h3 id="Obiturarytitle1">{{obiturary_title}}</h3>
+                        <p class="DocBody">{{obi}}</p>
+                    </div><!--column-->
+                </span><!--span-->
+            </div><!--column customize-->
+        </div><!--ui page grid demo-->
     </div>
 
 
 <!--Lucky Numbers-->
 
-<style>
-.ui-match { background: yellow; }
-</style>
 
 
 <!--Trendline-->

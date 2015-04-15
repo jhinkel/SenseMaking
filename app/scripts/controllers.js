@@ -44,7 +44,13 @@ angular.module('SenseMakingApp.controllers', [])
                     intersect = intersect(ObituraryIDs, documentIds);
                     angular.forEach(intersect, function(obiturary) {
                         API.getDocument(obiturary).then(function(obiturary){
-                            $scope.obituraries.push(obiturary);
+							
+                            $scope.obituraries.push({
+							'title': 'Obiturary', //body is the full document body
+							//'author':body.substring(
+                            'body': body.substring(0, 80)
+								
+								});
                         });
                     });
                 });
