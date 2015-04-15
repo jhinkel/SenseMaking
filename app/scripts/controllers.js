@@ -54,9 +54,9 @@ angular.module('SenseMakingApp.controllers', [])
                 angular.forEach(documentIds, function(documentId) {
                     API.callAylien(documentId).then(function(response) {
                         var keywords = response[0]['keyword'];
-						var AylienCallResponse = response;
+                        console.log(response);
+						angular.extend($scope.AylienCallResponse, response);
                         $scope.keywords = arrayUnique($scope.keywords.concat(keywords));
-                        console.log($scope.keywords);
                     });//API.callAylien(documentId), then
                 });//for
             });//API.getDocumentsByMonth
