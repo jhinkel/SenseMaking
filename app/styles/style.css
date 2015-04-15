@@ -176,7 +176,7 @@ p {
 	overflow:scroll;
 	margin:.5em 2em .5em 2em;
 		}
-.demo column{width:23.5%;}
+.demo column{width:23.5% !important;}
 .demo span {
 	display:table-cell;
 	text-align:center;
