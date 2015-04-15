@@ -52,12 +52,12 @@
         <div class="ui pagd grid demo">
             <div class="four column row" >
                 <div class="column column-customize clearfix" ng-repeat="document in documents">
-               		 <a class="ui left red corner label">
-                    	<i class="heart icon" ng-click="CopyContent"></i>
-                    </a>
                     <span class="major-news" >
+                   		 <a class="ui left red corner label label-customize">
+                            <i class="heart icon" ng-click="CopyContent($event)"></i>
+                        </a>
                        <div id="sentiment" style="{{document.sentimentCSS}}" class="customize-color"></div>
-                       <div style="margin:2em 2em 2em 2em;">
+                       <div style="margin:4em 2em 2em 2em;">
                            <h3 class="DocTitle">{{document.title}}</h3>
                            <h5 class="DocAuthorAndDate dividing header">{{document.date}}</h5>
                            <p class="DocBody">{{document.body}}</p>

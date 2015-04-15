@@ -70,8 +70,11 @@ p {
 }
 
 .label {
-    margin: .5em 2em .5em 0 !important;
+    margin: .5em 1 .5em 0 !important;
 }
+.label-customize{
+	margin-left:1.2em !important;
+	}
 
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -197,7 +200,8 @@ p {
 		}
 
 .column-customize{
-	margin-bottom:1em !important;}
+	margin-bottom:1em !important;
+	margin-top:2em !important;}
 
 .customize-color{
 	width:100%;
