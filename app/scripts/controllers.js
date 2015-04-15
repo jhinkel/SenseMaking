@@ -11,14 +11,65 @@ angular.module('SenseMakingApp.controllers', [])
     .controller('MainCtrl', function ($scope, $log, API) {
         $scope.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-
         $scope.setCurrentMonth = function (month) {
             $scope.currentMonth = month;
             $scope.keywords = [];
+            $scope.currentDocumentsInfo = {};
+
+            function intersect(a, b) {
+                var t;
+                var intersect = [];
+                if (b.length > a.length) t = b, b = a, a = t; // indexOf to loop over shorter
+                return a.filter(function (e) {
+                    if (b.indexOf(e) !== -1) return true;
+                });
+            }
+            function arrayUnique(array) {
+                var a = array.concat();
+                for(var i=0; i<a.length; ++i) {
+                    for(var j=i+1; j<a.length; ++j) {
+                        if(a[i] === a[j])
+                            a.splice(j--, 1);
+                    }
+                }
+                return a;
+            }
 
             console.log('fetching documents in ' + month);
-            API.getDocumentsByMonth(month).then(function (documentIds) {
-                console.log('fetched ' + documentIds.length + ' documents in ' + month);
+            API.getDocumentsByMonth(month).then(function (docIdsForMonth) {
+                $scope.docIdsForMonth = docIdsForMonth;
+                console.log('fetched ' + docIdsForMonth.length + ' documents in ' + month);
+                console.log('fetching documents containing \'Obituaries\'');
+                API.getDocumentsByKeyword("Obituaries").then(function (obituraryIDs){
+                    console.log('fetched ' + obituraryIDs.length + ' containing \'Obituaries\'');
+                    $scope.obituraries = [];
+                    var obituraryIdsForMonth = intersect(obituraryIDs, docIdsForMonth);
+                    angular.forEach(obituraryIdsForMonth, function(obituraryId) {
+                        API.getDocument(obituraryId).then(function(obiturary){
+                            $scope.obituraries.push(obiturary);
+                        });
+                    });
+                });
+
+                //How the function below flows: find documentId --> find a specific keyword --> find sentiment & title/author
+                console.log('analyzing documents...');
+                $scope.currentDocumentsInfo = {};
+                angular.forEach(docIdsForMonth, function(documentId) {
+                    API.callAylien(documentId).then(function(response) {
+                        $scope.currentDocumentsInfo[documentId] = response;
+                        var keywords = response[0]['keyword'];
+                        $scope.keywords = arrayUnique($scope.keywords.concat(keywords));
+                    });//API.callAylien(documentId), then
+                });//for
+            });//API.getDocumentsByMonth
+        };//setCurrentMonth
+
+        $scope.setCurrentKeyword = function (keyword) {
+            $scope.currentKeyword = keyword;
+            $scope.documents = [];
+
+            console.log('fetching documents with keyword \'' + keyword + '\'');
+            API.getDocumentsByKeyword(keyword).then(function (docIdsForKeyword) {
                 function intersect(a, b) {
                     var t;
                     var intersect = [];
@@ -27,64 +78,20 @@ angular.module('SenseMakingApp.controllers', [])
                         if (b.indexOf(e) !== -1) return true;
                     });
                 }
-                function arrayUnique(array) {
-                    var a = array.concat();
-                    for(var i=0; i<a.length; ++i) {
-                        for(var j=i+1; j<a.length; ++j) {
-                            if(a[i] === a[j])
-                                a.splice(j--, 1);
-                        }
-                    }
-                    return a;
-                };
-                console.log('fetching documents containing \'Obituaries\'');
-                API.getDocumentsByKeyword("Obituaries").then(function (ObituraryIDs){
-                    console.log('fetched ' + ObituraryIDs.length + ' containing \'Obituaries\'');
-                    $scope.obituraries = [];
-                    intersect = intersect(ObituraryIDs, documentIds);
-                    angular.forEach(intersect, function(obiturary) {
-                        API.getDocument(obiturary).then(function(obiturary){
-                            $scope.obituraries.push(obiturary);
-                        });
-                    });
-                });
-
-                //How the function below flows: find documentId --> find a specific keyword --> find sentiment & title/author
-                console.log('analyzing documents...');
-                angular.forEach(documentIds, function(documentId) {
-                    API.callAylien(documentId).then(function(response) {
-                        var keywords = response[0]['keyword'];
-                        console.log(response);
-                        $scope.keywords = arrayUnique($scope.keywords.concat(keywords));
-                    });//API.callAylien(documentId), then
-                });//for
-            });//API.getDocumentsByMonth
-        }//setCurrentMonth
-
-        $scope.setCurrentKeyword = function (keyword) {
-            $scope.currentKeyword = keyword;
-            $scope.documents = [];
-
-            console.log('fetching documents with keyword \'' + keyword + '\'');
-            API.getDocumentsByKeyword(keyword).then(function (documents) {
-                console.log('fetched ' + documents.length + ' documents with keyword \'' + keyword + '\'');
-                angular.forEach(documents, function(documentId) {
+                $scope.docIdsForSelection = intersect(docIdsForKeyword, $scope.docIdsForMonth);
+                console.log('fetched ' + $scope.docIdsForSelection.length + ' documents for the month with keyword \'' + keyword + '\'');
+                angular.forEach($scope.docIdsForSelection, function(documentId) {
                     API.getDocument(documentId).then(function(body) {
-                        var polarity = "positive"; // TO DO: extrac document polarity from http://johnhinkel.com/SenseMaking/api/AylienCalls.php?filename=1101162433811
-                        var sentiment = Math.random();
-                        var r = Math.ceil (255 * sentiment);
-                        var g = Math.ceil (255 * sentiment);
-                        var b = Math.ceil (255 * sentiment);
-                        if (polarity = "positive"){
+                        var confidence = $scope.currentDocumentsInfo[documentId].polarityConfidence;
+                        var r = Math.ceil (255 * confidence);
+                        var g = Math.ceil (255 * confidence);
+                        var b = Math.ceil (255 * confidence);
+                        var polarity = $scope.currentDocumentsInfo[documentId].polarity;
+                        if ("positive" === polarity){
                             g += 150;
                         } else {
                             r += 150;
                         }
-						var title
-						var date
-						var author
-						var DocBody
-						var sentimentCSS
                         $scope.documents.push({
                             'title': body.substring(0, body.indexOf("Date")), //body is the full document body
 							//'author':body.substring(
