@@ -55,7 +55,6 @@ angular.module('SenseMakingApp.controllers', [])
                     API.callAylien(documentId).then(function(response) {
                         var keywords = response[0]['keyword'];
                         console.log(response);
-						angular.extend($scope.AylienCallResponse, response);
                         $scope.keywords = arrayUnique($scope.keywords.concat(keywords));
                     });//API.callAylien(documentId), then
                 });//for
