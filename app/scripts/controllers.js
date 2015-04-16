@@ -87,16 +87,11 @@ angular.module('SenseMakingApp.controllers', [])
                 console.log('fetched ' + $scope.docIdsForSelection.length + ' documents for the month with keyword \'' + keyword + '\'');
                 angular.forEach($scope.docIdsForSelection, function(documentId) {
                     API.getDocument(documentId).then(function(body) {
-                        var confidence = $scope.currentDocumentsInfo[documentId].polarityConfidence;
-                        var r = Math.ceil (255 * confidence);
-                        var g = Math.ceil (255 * confidence);
-                        var b = Math.ceil (255 * confidence);
                         var polarity = $scope.currentDocumentsInfo[documentId].polarity;
-                        if ("positive" === polarity){
-                            g += 150;
-                        } else {
-                            r += 150;
-                        }
+                        var h = ("negative" === polarity) ? '0' : '120';
+                        var s = '100%';
+                        var confidence = $scope.currentDocumentsInfo[documentId].polarityConfidence;
+                        var l = (100 - (confidence * 50)) + '%';
                         $scope.documents.push({
                             'title': body.substring(0, body.indexOf("Date")), //body is the full document body
 							//'author':body.substring(
@@ -104,7 +99,7 @@ angular.module('SenseMakingApp.controllers', [])
                             'body': body.substring(body.indexOf("2004"), 80),
                             'fullBody': body,
                             //'id': documentId,
-                            'sentimentCSS':  'background-color: rgb(' + r + ',' + g + ',' + b + ')'
+                            'sentimentCSS':  'background-color: hsl(' + h + ',' + s + ',' + l + ')'
                         });
                     });
                 });
@@ -120,6 +115,10 @@ angular.module('SenseMakingApp.controllers', [])
                     type: 'line'
                 });
             });
+        };
+
+        $scope.copyContent = function() {
+
         };
 
         $scope.openModal = function(document) {
