@@ -98,7 +98,7 @@ angular.module('SenseMakingApp.controllers', [])
 							'date': body.substring(body.indexOf("Web:"), body.indexOf("2004")),
                             'body': body.substring(body.indexOf("2004"), 80),
                             'fullBody': body,
-                            //'id': documentId,
+                            'id': documentId,
                             'sentimentCSS':  'background-color: hsl(' + h + ',' + s + ',' + l + ')'
                         });
                     });
@@ -117,14 +117,18 @@ angular.module('SenseMakingApp.controllers', [])
             });
         };
 
-        $scope.copyContent = function() {
-
+        $scope.copyContent = function(event) {
+            var thing = event.currentTarget.parentNode;
+            var newThing = thing.cloneNode(true);
+            document.querySelector('#pinboard').appendChild(newThing);
         };
 
-        $scope.openModal = function(document) {
-            $scope.currentDocumentTitle = document.title;
-            $scope.currentDocumentBody = document.fullBody;
-            $scope.show_modal = true;
+        $scope.openModal = function(event) {
+            var documentId = event.currentTarget.parentNode.parentNode.getAttribute('data-documentId');
+            API.getDocument(documentId).then(function(body) {
+                $scope.currentDocumentBody = body;
+                $scope.show_modal = true;
+            });
         };
 
         $scope.closeModal = function(){

@@ -19,102 +19,106 @@
     <!-- endbuild -->
 </head>
 <body ng-app="SenseMakingApp" ng-controller="MainCtrl">
-    <div class="ui inverted segment"></div>
-    <div class="container">
-        <div id="current-month">
-            <p>2004</p>
-            <section id="month">
-                {{currentMonth}}
-            </section>
-        </div>
-        <div id="title">
-            <h1>The Alderwood Times</h1>
-            <p>Your Best Local News Source in Alderwood</p>
-            <!--img src="images/logo.png" alt="senseMaking" /-->
-        </div>
-    </div>
-    <div class="container">
-        <div id="monthList">
-            <button ng-repeat="month in months" ng-click="setCurrentMonth(month)">{{month}}</button>
-        </div>
-        <div id="tagCloud" ng-show="currentMonth">
-            <div class="ui fluid action input">
-                <input type="text" placeholder="Filter keywords..." ng-model="searchText">
-                <div class="ui button">Filter</div>
+    <div id="newspaper">
+        <div class="ui inverted segment"></div>
+        <div class="container">
+            <div id="current-month">
+                <p>2004</p>
+                <section id="month">
+                    {{currentMonth}}
+                </section>
             </div>
-            <span ng-repeat="keyword in keywords | filter:searchText" ng-click="setCurrentKeyword(keyword)">{{keyword}}</span>
+            <div id="title">
+                <h1>The Alderwood Times</h1>
+                <p>Your Best Local News Source in Alderwood</p>
+                <!--img src="images/logo.png" alt="senseMaking" /-->
+            </div>
         </div>
-    </div>
+        <div class="container">
+            <div id="monthList">
+                <button ng-repeat="month in months" ng-click="setCurrentMonth(month)">{{month}}</button>
+            </div>
+            <div id="tagCloud" ng-show="currentMonth">
+                <div class="ui fluid action input">
+                    <input type="text" placeholder="Filter keywords..." ng-model="searchText">
+                    <div class="ui button">Filter</div>
+                </div>
+                <span ng-repeat="keyword in keywords | filter:searchText" ng-click="setCurrentKeyword(keyword)">{{keyword}}</span>
+            </div>
+        </div>
 
 
-    <h1 class="ui header teal label" id="FirstTitle" ng-show="currentKeyword">Documents from {{currentMonth}} containing "{{currentKeyword}}"</h1>
-    <div class="container">
-        <div class="ui pagd grid demo">
-            <div class="four column row" >
-                <div class="column column-customize clearfix" ng-repeat="document in documents">
-                    <span class="major-news" >
-                        <a class="ui left black corner label label-customize">
-                            <i class="pin icon" ng-click="copyContent($event)"></i>
-                        </a>
-                        <div id="sentiment" style="{{document.sentimentCSS}}" class="customize-color"></div>
-                        <div style="margin:4em 2em 2em 2em;">
-                            <h3 class="DocTitle">{{document.title}}</h3>
-                            <h5 class="DocAuthorAndDate dividing header">{{document.date}}</h5>
-                            <p class="DocBody">{{document.body}}</p>
-                            <button class="ui inverted blue button ReadMore" ng-click="openModal(document)">
-                                Read More
-                            </button><!--Read More button-->
+        <h1 class="ui header teal label" id="FirstTitle" ng-show="currentKeyword">Documents from {{currentMonth}} containing "{{currentKeyword}}"</h1>
+        <div class="container">
+            <div class="ui pagd grid demo">
+                <div class="four column row" >
+                    <div class="column column-customize clearfix" ng-repeat="document in documents">
+                        <div class="major-news" data-documentId="{{document.id}}">
+                            <a class="ui left black corner label label-customize" ng-click="copyContent($event)">
+                                <i class="pin icon"></i>
+                            </a>
+                            <div id="sentiment" style="{{document.sentimentCSS}}" class="customize-color"></div>
+                            <div style="margin:4em 2em 2em 2em;">
+                                <h3 class="DocTitle">{{document.title}}</h3>
+                                <h5 class="DocAuthorAndDate dividing header">{{document.date}}</h5>
+                                <p class="DocBody">{{document.body}}</p>
+                                <button class="ui inverted blue button ReadMore" ng-click="openModal($event)">
+                                    Read More
+                                </button><!--Read More button-->
+                            </div>
                         </div>
-                    </span>
-                </div><!--column-customize-->
-            </div><!--four column row-->
-        </div><!--ui page grid-->
-    </div><!--container-->
+                    </div><!--column-customize-->
+                </div><!--four column row-->
+            </div><!--ui page grid-->
+        </div><!--container-->
 
-    <!--Modal Starts-->
-    <div id="modal" ng-show="show_modal" class="ui piled segment">
-        <a class="ui red right ribbon label" ng-click="closeModal()">
-            <i class="close icon"></i> Close
-        </a>
-        <h4 class="ui header">
-            {{currentDocumentTitle}}
-        </h4>
-        <p>
-            {{currentDocumentBody}}
-        </p>
-    </div>
-    <!--Modal Ends-->
-
-    <!--Obituaries-->
-    <h1 class="ui header black label" id="obituaries" ng-show="currentMonth">Obituaries from {{currentMonth}}</h1>
-    <div class="container">
-        <div class="ui page grid demo">
-            <div class="two column row">
-                <div class="column column-customize clearfix" ng-repeat="obiturary in obituraries">
-                    <span class="obiturary-news">
-                        <div id="obiturary" class="obiturary-band"></div>
-                        <div class="column" >
-                            <h3 class="Obiturarytitle1">{{obiturary.title}}</h3>
-                            <p class="DocBody">{{obiturary.body}}</p>
-                        </div><!--column-->
-                    </span><!--span-->
-                </div><!--column customize-->
-            </div><!--ui page grid demo-->
+        <!--Modal Starts-->
+        <div id="modal" ng-show="show_modal" class="ui piled segment">
+            <a class="ui red right ribbon label" ng-click="closeModal()">
+                <i class="close icon"></i> Close
+            </a>
+            <p>
+                {{currentDocumentBody}}
+            </p>
         </div>
-    </div>
+        <!--Modal Ends-->
 
-
-    <!--Lucky Numbers-->
-
-
-    <!--Trendline-->
-    <h1 class="ui header ui orange label" id="trendline">Trend Line</h1>
-    <div class="container">
-        <div class="ui vertically divided grid">
-            <div class="column row">
-                <div id="chart"></div>
+        <!--Obituaries-->
+        <h1 class="ui header black label" id="obituaries" ng-show="currentMonth">Obituaries from {{currentMonth}}</h1>
+        <div class="container">
+            <div class="ui page grid demo">
+                <div class="two column row">
+                    <div class="column column-customize clearfix" ng-repeat="obiturary in obituraries">
+                        <div class="obiturary-news">
+                            <div id="obiturary" class="obiturary-band"></div>
+                            <div class="column" >
+                                <h3 class="Obiturarytitle1">{{obiturary.title}}</h3>
+                                <p class="DocBody">{{obiturary.body}}</p>
+                            </div><!--column-->
+                        </div><!--span-->
+                    </div><!--column customize-->
+                </div><!--ui page grid demo-->
             </div>
         </div>
+
+
+        <!--Lucky Numbers-->
+
+
+        <!--Trendline-->
+        <h1 class="ui header ui orange label" id="trendline">Trend Line</h1>
+        <div class="container">
+            <div class="ui vertically divided grid">
+                <div class="column row">
+                    <div id="chart"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="pinboard">
+
     </div>
 
 
