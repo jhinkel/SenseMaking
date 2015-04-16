@@ -95,8 +95,8 @@ angular.module('SenseMakingApp.controllers', [])
                         $scope.documents.push({
                             'title': body.substring(0, body.indexOf("Date")), //body is the full document body
 							//'author':body.substring(
-							'date': body.substring(body.indexOf("Web:"), body.indexOf("2004")),
-                            'body': body.substring(body.indexOf("2004"), 80),
+							'date': body.substring(body.indexOf("Web:")+ 4, body.indexOf("2004")+4),
+                            'body': body.substring(body.indexOf("2004") + 4, 80),
                             'fullBody': body,
                             'id': documentId,
                             'sentimentCSS':  'background-color: hsl(' + h + ',' + s + ',' + l + ')'
