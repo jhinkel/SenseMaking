@@ -209,7 +209,7 @@ p {
 	margin-top:1em;
 	height:20px;
 	}
-	
+
 .obiturary-band
 	{
 	color:black;
@@ -218,7 +218,7 @@ p {
 	padding:0 2em 0 2em;
 	margin-top:1em;
 	height:20px;
-	
+
 	}
 
 
@@ -270,4 +270,17 @@ padding:3em 3em;
 .c3 svg g g.c3-axis.c3-axis-y2 {
 font: 16px helvetica sans-serif;
 padding:3em 3em;
+}
+
+#modal {
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    height: 50%;
+    width: 50%;
+    z-index: 1;
+}
+#modal p {
+    height: 80%;
+    overflow-y: auto;
 }

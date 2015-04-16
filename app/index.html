@@ -53,60 +53,37 @@
             <div class="four column row" >
                 <div class="column column-customize clearfix" ng-repeat="document in documents">
                     <span class="major-news" >
-                   		 <a class="ui left red corner label label-customize">
-                            <i class="heart icon" ng-click="CopyContent($event)"></i>
+                        <a class="ui left black corner label label-customize">
+                            <i class="move icon" ng-click="CopyContent($event)"></i>
                         </a>
-                       <div id="sentiment" style="{{document.sentimentCSS}}" class="customize-color"></div>
-                       <div style="margin:4em 2em 2em 2em;">
-                           <h3 class="DocTitle">{{document.title}}</h3>
-                           <h5 class="DocAuthorAndDate dividing header">{{document.date}}</h5>
-                           <p class="DocBody">{{document.body}}</p>
-                           <div class="ui inverted blue button ReadMore" onClick="OpenModal()">Read More
-                           		
-                           </div><!--Read More button-->
-                       </div>
+                        <div id="sentiment" style="{{document.sentimentCSS}}" class="customize-color"></div>
+                        <div style="margin:4em 2em 2em 2em;">
+                            <h3 class="DocTitle">{{document.title}}</h3>
+                            <h5 class="DocAuthorAndDate dividing header">{{document.date}}</h5>
+                            <p class="DocBody">{{document.body}}</p>
+                            <button class="ui inverted blue button ReadMore" ng-click="openModal(document)">
+                                Read More
+                            </button><!--Read More button-->
+                        </div>
                     </span>
                 </div><!--column-customize-->
             </div><!--four column row-->
         </div><!--ui page grid-->
     </div><!--container-->
 
-<!--The function is to call modal open. It didn't work in the div above-->
-
-			<script>
-                                	
-				function OpenModal (){					
-					$('.test.modal').modal('show');}
-                                
-             </script>
-
-        <!--Modal Starts-->
-        <div class="ui modal">
-          <i class="close icon"></i>
-          <div class="header">
-            Profile Picture
-          </div>
-          <div class="content">
-            <div class="ui medium image">
-              <img src="/images/avatar/large/chris.jpg">
-            </div>
-            <div class="description">
-              <div class="ui header">We've auto-chosen a profile image for you.</div>
-              <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-              <p>Is it okay to use this photo?</p>
-            </div>
-          </div>
-          <div class="actions">
-            <div class="ui black button">
-              Nope
-            </div>
-            <div class="ui positive right labeled icon button">
-              Yep, that's me
-              <i class="checkmark icon"></i>
-            </div>
-          </div>
-        </div>
-        <!--Modal Ends-->
+    <!--Modal Starts-->
+    <div id="modal" ng-show="show_modal" class="ui piled segment">
+        <a class="ui red right ribbon label" ng-click="closeModal()">
+            <i class="close icon"></i> Close
+        </a>
+        <h4 class="ui header">
+            {{currentDocumentTitle}}
+        </h4>
+        <p>
+            {{currentDocumentBody}}
+        </p>
+    </div>
+    <!--Modal Ends-->
 
     <!--Obituaries-->
     <h1 class="ui header black label" id="obituaries" ng-show="currentMonth">Obituaries from {{currentMonth}}</h1>
@@ -145,8 +122,8 @@
     <!-- bower:js -->
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-animate/angular-animate.js"></script>
-    <script src="../bower_components/d3/d3.js"></script>
-    <script src="../bower_components/c3/c3.js"></script>
+    <script src="../bower_components/d3/d3.min.js"></script>
+    <script src="../bower_components/c3/c3.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->

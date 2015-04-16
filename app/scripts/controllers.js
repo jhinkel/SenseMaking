@@ -10,6 +10,7 @@
 angular.module('SenseMakingApp.controllers', [])
     .controller('MainCtrl', function ($scope, $log, API) {
         $scope.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        $scope.show_modal = false;
 
         $scope.setCurrentMonth = function (month) {
             $scope.currentMonth = month;
@@ -101,6 +102,7 @@ angular.module('SenseMakingApp.controllers', [])
 							//'author':body.substring(
 							'date': body.substring(body.indexOf("Web:"), body.indexOf("2004")),
                             'body': body.substring(body.indexOf("2004"), 80),
+                            'fullBody': body,
                             //'id': documentId,
                             'sentimentCSS':  'background-color: rgb(' + r + ',' + g + ',' + b + ')'
                         });
@@ -118,6 +120,16 @@ angular.module('SenseMakingApp.controllers', [])
                     type: 'line'
                 });
             });
+        };
+
+        $scope.openModal = function(document) {
+            $scope.currentDocumentTitle = document.title;
+            $scope.currentDocumentBody = document.fullBody;
+            $scope.show_modal = true;
+        };
+
+        $scope.closeModal = function(){
+            $scope.show_modal = false;
         };
 
         console.log('fetching document metadata');
@@ -172,7 +184,7 @@ angular.module('SenseMakingApp.controllers', [])
                 },
                 axis: {
                     x: {
-				
+
                         type: 'category',
                         categories: $scope.months
                     },
@@ -180,12 +192,12 @@ angular.module('SenseMakingApp.controllers', [])
 			          label: {
                             text: 'Number of documents',
                             position: 'outer-top',
-							
+
                         }
-						
+
                     },
                     y2: {
-					
+
                         show: true,
                         label: {
                             text: 'Frequency of keyword',
