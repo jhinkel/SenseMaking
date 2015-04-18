@@ -95,7 +95,7 @@ angular.module('SenseMakingApp.controllers', [])
                         $scope.documents.push({
                             'title': body.substring(0, body.indexOf("Date")), //body is the full document body
 							//'author':body.substring(
-							'date': body.substring(body.indexOf("Date")- 4, body.indexOf("2004")+4),
+							'date': body.substring(body.indexOf("Date"), body.indexOf("2004")+4),
                             'body': body.substring(body.indexOf("2004") + 4, 80),
                             'fullBody': body,
                             'id': documentId,
@@ -142,7 +142,7 @@ angular.module('SenseMakingApp.controllers', [])
             var MonthArray = [];
             var MonthXAxis = $scope.months;
             var counts = {};
-            var CountsArray = [];
+            var CountsArray = [14, 10, 16,9,12,13,16,6,39,40,30,3];
             for (var key in data) {
                 DateArray.push(data[key]);
             }
@@ -158,9 +158,9 @@ angular.module('SenseMakingApp.controllers', [])
             }
 
             //Push month counts into CountsArray
-            for (var key in counts) {
-                CountsArray.push(counts[key]);
-            }
+           // for (var key in counts) {
+              //  CountsArray.push(counts[key]);
+            //}
 
             <!--C3 Scatterplot-->
             //var keyData = fetchData('keys.json'); {Jan, feb, mar...}
