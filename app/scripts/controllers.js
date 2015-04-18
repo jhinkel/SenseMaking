@@ -8,7 +8,7 @@
  * Controller of the senseMakingApp
  */
 angular.module('SenseMakingApp.controllers', [])
-    .controller('MainCtrl', function ($scope, $log, API, Utils) {
+    .controller('MainCtrl', function ($scope, $log, API) {
         $scope.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         $scope.show_modal = false;
 
@@ -16,6 +16,25 @@ angular.module('SenseMakingApp.controllers', [])
             $scope.currentMonth = month;
             $scope.keywords = [];
             $scope.currentDocumentsInfo = {};
+
+            function intersect(a, b) {
+                var t;
+                var intersect = [];
+                if (b.length > a.length) t = b, b = a, a = t; // indexOf to loop over shorter
+                return a.filter(function (e) {
+                    if (b.indexOf(e) !== -1) return true;
+                });
+            }
+            function arrayUnique(array) {
+                var a = array.concat();
+                for(var i=0; i<a.length; ++i) {
+                    for(var j=i+1; j<a.length; ++j) {
+                        if(a[i] === a[j])
+                            a.splice(j--, 1);
+                    }
+                }
+                return a;
+            }
 
             console.log('fetching documents in ' + month);
             API.getDocumentsByMonth(month).then(function (docIdsForMonth) {
@@ -25,7 +44,7 @@ angular.module('SenseMakingApp.controllers', [])
                 API.getDocumentsByKeyword("Obituaries").then(function (obituraryIDs){
                     console.log('fetched ' + obituraryIDs.length + ' containing \'Obituaries\'');
                     $scope.obituraries = [];
-                    var obituraryIdsForMonth = Utils.intersect(obituraryIDs, docIdsForMonth);
+                    var obituraryIdsForMonth = intersect(obituraryIDs, docIdsForMonth);
                     angular.forEach(obituraryIdsForMonth, function(obituraryId) {
                         API.getDocument(obituraryId).then(function(obiturary){
                             $scope.obituraries.push({
@@ -44,7 +63,7 @@ angular.module('SenseMakingApp.controllers', [])
                     API.callAylien(documentId).then(function(response) {
                         $scope.currentDocumentsInfo[documentId] = response;
                         var keywords = response[0]['keyword'];
-                        $scope.keywords = Utils.unique($scope.keywords.concat(keywords));
+                        $scope.keywords = arrayUnique($scope.keywords.concat(keywords));
                     });//API.callAylien(documentId), then
                 });//for
             });//API.getDocumentsByMonth
@@ -56,7 +75,15 @@ angular.module('SenseMakingApp.controllers', [])
 
             console.log('fetching documents with keyword \'' + keyword + '\'');
             API.getDocumentsByKeyword(keyword).then(function (docIdsForKeyword) {
-                $scope.docIdsForSelection = Utils.intersect(docIdsForKeyword, $scope.docIdsForMonth);
+                function intersect(a, b) {
+                    var t;
+                    var intersect = [];
+                    if (b.length > a.length) t = b, b = a, a = t; // indexOf to loop over shorter
+                    return a.filter(function (e) {
+                        if (b.indexOf(e) !== -1) return true;
+                    });
+                }
+                $scope.docIdsForSelection = intersect(docIdsForKeyword, $scope.docIdsForMonth);
                 console.log('fetched ' + $scope.docIdsForSelection.length + ' documents for the month with keyword \'' + keyword + '\'');
                 angular.forEach($scope.docIdsForSelection, function(documentId) {
                     API.getDocument(documentId).then(function(body) {
@@ -73,20 +100,6 @@ angular.module('SenseMakingApp.controllers', [])
                             'fullBody': body,
                             'id': documentId,
                             'sentimentCSS':  'background-color: hsl(' + h + ',' + s + ',' + l + ')'
-                        });
-                    });
-                });
-            });
-
-            console.log('fetching documents containing \'FactSheet\'');
-            API.getDocumentsByKeyword("FactSheet").then(function (factsheetIDs){
-                console.log('fetched ' + factsheetIDs.length + ' containing \'Obituaries\'');
-                $scope.factsheets = [];
-                angular.forEach(factsheetIDs, function(factsheetId) {
-                    API.getDocument(factsheetId).then(function(factsheet){
-                        $scope.factsheets.push({
-                            'title': 'factsheet',
-                            'body': factsheet.substring(0, 80)
                         });
                     });
                 });
