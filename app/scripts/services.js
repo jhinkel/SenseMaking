@@ -223,10 +223,32 @@ angular.module('SenseMakingApp.services', [])
                         ];
                     }
                 )
-            },//getFreqencyByMonth
+            }//getFreqencyByMonth
+        };//return
+    })//API
 
-		
-        };
-    });
-	
-	
+    .factory('Utils', function () {
+        return {
+            intersect: function(a, b) {
+                var t;
+                var intersect = [];
+                if (b.length > a.length) t = b, b = a, a = t; // indexOf to loop over shorter
+                return a.filter(function (e) {
+                    if (b.indexOf(e) !== -1) {
+                        return true;
+                    }
+                });
+            },
+            unique: function (array) {
+                var a = array.concat();
+                for (var i = 0; i < a.length; ++i) {
+                    for (var j = i + 1; j < a.length; ++j) {
+                        if (a[i] === a[j]) {
+                            a.splice(j--, 1);
+                        }
+                    }
+                }
+                return a;
+            }
+        };//return
+    });//Utils
