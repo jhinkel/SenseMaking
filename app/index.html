@@ -34,6 +34,17 @@
                 <!--img src="images/logo.png" alt="senseMaking" /-->
             </div>
         </div>
+
+        <!--Trendline-->
+        <h1 class="ui header ui orange label" id="trendline">Trend Line</h1>
+        <div class="container" style="margin-bottom: 3em;">
+            <div class="ui vertically divided grid">
+                <div class="column row">
+                    <div id="chart"></div>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
             <div id="monthList">
                 <button ng-repeat="month in months" ng-click="setCurrentMonth(month)">{{month}}</button>
@@ -100,21 +111,6 @@
                 </div><!--ui page grid demo-->
             </div>
         </div>
-
-
-        <!--Lucky Numbers-->
-
-
-        <!--Trendline-->
-        <h1 class="ui header ui orange label" id="trendline">Trend Line</h1>
-        <div class="container">
-            <div class="ui vertically divided grid">
-                <div class="column row">
-                    <div id="chart"></div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <div id="pinboard">
