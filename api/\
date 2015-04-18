@@ -50,9 +50,7 @@ for($MonthNumber=1;$MonthNumber<=12;$MonthNumber++){
 			//GET FREQUENCY COUNTS HERE!
 			$text = file_get_contents($path."/".$files[$i]);
 			$freqCount= substr_count($text,$keyword);
-			if(!in_array($filenumbers,$factsheets)){
-				$frequencyCountMonth += $freqCount;
-			}
+			$frequencyCountMonth += $freqCount;
 		}	
 	}
 	array_push($results, $frequencyCountMonth);

@@ -79,15 +79,6 @@ for($i=2;$i<sizeof($files);$i++){
 		
 	}	
 }
-		array_push($results, "1201243446501");                  
-		array_push($results, "1201243446502");                  
-		array_push($results, "1201243446503");
-		array_push($results, "1201243446504");
-		array_push($results, "1201243446505");                  
-		array_push($results, "1201243446506");
-		array_push($results, "1201243446507");                  
-		array_push($results, "1201243446508");                  
-		array_push($results, "1201243446613");                  
 
 
 echo json_encode($results);
